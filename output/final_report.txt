@@ -1,0 +1,44 @@
+================================================================================
+  VINOGEN-CYBERCORE: NEUROEVOLUTION SYSTEM REPORT
+================================================================================
+
+[DATASET INFORMATION]
+----------------------------------------
+  source: synthetic
+  samples: 5000
+  features: 11
+  classes: 3
+  task: classification
+  feature_names: ['fixed_acidity', 'volatile_acidity', 'citric_acid', 'residual_sugar', 'chlorides', 'free_sulfur_dioxide', 'total_sulfur_dioxide', 'density', 'pH', 'sulphates', 'alcohol']
+  train_size: 3000
+  val_size: 1000
+  test_size: 1000
+
+[EVOLVED ARCHITECTURE]
+----------------------------------------
+  Hidden Layers: 56
+  Activations: tanh
+  Learning Rate: 0.002954
+  Fitness Score: 0.923000
+  Generation: 3
+
+[TEST SET PERFORMANCE]
+----------------------------------------
+  loss: 0.367133
+  accuracy: 0.870000
+
+[DETAILED CLASSIFICATION REPORT]
+----------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.29      0.19      0.23        21
+           1       0.91      0.93      0.92       840
+           2       0.64      0.58      0.61       139
+
+    accuracy                           0.87      1000
+   macro avg       0.61      0.57      0.59      1000
+weighted avg       0.86      0.87      0.87      1000
+
+================================================================================
+  End of Report
+================================================================================

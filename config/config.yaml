@@ -1,0 +1,43 @@
+architecture:
+  activations:
+  - relu
+  - sigmoid
+  - tanh
+  - leaky_relu
+  - elu
+  learning_rate_range:
+  - 0.0001
+  - 0.01
+  max_layers: 5
+  max_neurons: 256
+  min_neurons: 16
+data:
+  dataset_path: C:\Users\andre\Core\Eye_ofthe_Universe\Universs\Inteligencia_Artificial\Proyectos\Proyecto_Final\data\winequality.csv
+  random_seed: 42
+  task: classification
+  test_size: 0.2
+  val_size: 0.25
+genetic_algorithm:
+  crossover_rate: 0.7
+  elitism_ratio: 0.2
+  generations: 10
+  mutation_rate: 0.3
+  population_size: 20
+project:
+  author: Neuroevolution AI Lab
+  name: VinoGen-CyberCore
+  version: 1.0.0
+training:
+  batch_size: 32
+  early_stopping_patience: 10
+  epochs_per_genome: 50
+ui:
+  show_math_explanations: true
+  verbose: true
+visualization:
+  animation_fps: 10
+  save_3d_landscape: true
+  save_animation: true
+  save_confusion_matrix: true
+  save_learning_curves: true
+  save_topology: true

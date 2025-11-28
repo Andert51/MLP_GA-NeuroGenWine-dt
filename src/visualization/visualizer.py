@@ -242,10 +242,11 @@ class Visualizer:
             
             plt.tight_layout()
             
-            # Convert to image
+            # Convert to image (using buffer_rgba instead of deprecated tostring_rgb)
             fig.canvas.draw()
-            image = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
-            image = image.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+            # Use buffer_rgba() which is the modern API
+            buf = fig.canvas.buffer_rgba()
+            image = np.asarray(buf)[:, :, :3]  # Remove alpha channel
             frames.append(image)
             plt.close()
         

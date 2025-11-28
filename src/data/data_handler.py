@@ -93,9 +93,16 @@ class DataHandler:
         
         # Process target based on task
         if self.task == "classification":
-            # Convert to categorical
-            self.label_encoder.fit(y)
-            y = self.label_encoder.transform(y)
+            # Convert to categorical and ensure 0-based indexing
+            if y.dtype in [np.float32, np.float64]:
+                # If continuous, bin into classes
+                y = pd.qcut(y, q=min(10, len(np.unique(y))), labels=False, duplicates='drop')
+            
+            # Remap to 0-based labels for PyTorch
+            unique_labels = np.unique(y)
+            label_map = {old: new for new, old in enumerate(sorted(unique_labels))}
+            y = np.array([label_map[label] for label in y])
+            
             self.n_classes = len(np.unique(y))
         else:
             # Regression: keep continuous
@@ -176,7 +183,11 @@ class DataHandler:
         
         if self.task == "classification":
             # Convert to quality classes (3-9)
-            y = np.clip(np.round(quality_score * 3 + 6), 3, 9).astype(int)
+            y_raw = np.clip(np.round(quality_score * 3 + 6), 3, 9).astype(int)
+            
+            # Remap to 0-based labels for PyTorch
+            # Original: 3,4,5,6,7,8,9 -> New: 0,1,2,3,4,5,6
+            y = y_raw - y_raw.min()
             self.n_classes = len(np.unique(y))
         else:
             # Regression: continuous quality

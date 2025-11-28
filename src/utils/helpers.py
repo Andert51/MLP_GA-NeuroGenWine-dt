@@ -39,7 +39,7 @@ def save_json(data: Dict[str, Any], filepath: Path):
     """Save dictionary to JSON file."""
     filepath.parent.mkdir(exist_ok=True, parents=True)
     
-    # Convert numpy types to Python types
+    # Convert numpy types to Python types recursively
     def convert(obj):
         if isinstance(obj, np.integer):
             return int(obj)
@@ -47,9 +47,13 @@ def save_json(data: Dict[str, Any], filepath: Path):
             return float(obj)
         elif isinstance(obj, np.ndarray):
             return obj.tolist()
+        elif isinstance(obj, dict):
+            return {k: convert(v) for k, v in obj.items()}
+        elif isinstance(obj, (list, tuple)):
+            return [convert(item) for item in obj]
         return obj
     
-    cleaned_data = {k: convert(v) for k, v in data.items()}
+    cleaned_data = convert(data)
     
     with open(filepath, 'w') as f:
         json.dump(cleaned_data, f, indent=2)

@@ -1,4 +1,4 @@
-# VinoGen-CyberCore 🧬🍷⚡
+# VinoGen-CyberCore 🧬🍷
 
 <div align="center">
 
@@ -22,7 +22,7 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **VinoGen-CyberCore** is a cutting-edge machine learning system that combines:
 
@@ -36,33 +36,33 @@ The system evolves optimal neural network architectures through natural selectio
 
 ---
 
-## 🚀 Features
+## Features
 
 ### Core Capabilities
 
-✅ **Neuroevolution Engine**
+ **Neuroevolution Engine**
 - Evolves network topology (layers, neurons, activations)
 - Genetic operators: Selection, Crossover, Mutation
 - Fitness-based optimization
 
-✅ **Dynamic Neural Networks**
+ **Dynamic Neural Networks**
 - Variable architecture support
 - Multiple activation functions (ReLU, Sigmoid, Tanh, LeakyReLU, ELU)
 - Automatic training and validation
 
-✅ **Educational & Verbose**
+ **Educational & Verbose**
 - Mathematical explanations (LaTeX equations in terminal)
 - Real-time progress tracking
 - Detailed logging and metrics
 
-✅ **Stunning Visualizations**
+ **Stunning Visualizations**
 - Network topology graphs
 - Neuron activation flow animations (GIF)
 - Learning curves and loss landscapes
 - Confusion matrices and classification reports
 - Interactive 3D plots with Plotly
 
-✅ **Cyberpunk Terminal UI**
+ **Cyberpunk Terminal UI**
 - Matrix-style boot sequences
 - Neon color scheme (green, blue, purple, pink)
 - Real-time dashboards and progress bars
@@ -70,7 +70,7 @@ The system evolves optimal neural network architectures through natural selectio
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 VinoGen-CyberCore/
@@ -131,7 +131,7 @@ VinoGen-CyberCore/
 
 ---
 
-## 🛠️ Installation
+##  Installation
 
 ### Prerequisites
 
@@ -173,7 +173,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🎮 Usage
+##  Usage
 
 ### Quick Start
 
@@ -224,7 +224,7 @@ If no file is found, the system generates synthetic data automatically.
 
 ---
 
-## 🧬 How It Works
+##  How It Works
 
 ### 1. Genetic Algorithm
 
@@ -308,7 +308,7 @@ Elite genomes are preserved across generations.
 
 ---
 
-## 📊 Output Files
+##  Output Files
 
 After execution, check the `output/` directory:
 
@@ -328,7 +328,7 @@ After execution, check the `output/` directory:
 
 ---
 
-## 🎨 Screenshots
+##  Screenshots
 
 ### Terminal Boot Sequence
 ```
@@ -341,7 +341,7 @@ After execution, check the `output/` directory:
 ### Evolution Progress
 ```
 ╔══════════════════════════════════════════════════════════╗
-║           GENERATION 5 SUMMARY                          ║
+║           GENERATION 5 SUMMARY                           ║
 ╚══════════════════════════════════════════════════════════╝
 
 🏆 TOP 5 ARCHITECTURES:
@@ -355,7 +355,7 @@ After execution, check the `output/` directory:
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 Run unit tests:
 
@@ -365,7 +365,7 @@ pytest tests/
 
 ---
 
-## 📚 Mathematical Background
+##  Mathematical Background
 
 ### Activation Functions
 
@@ -391,7 +391,7 @@ pytest tests/
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions welcome! Please:
 
@@ -403,13 +403,15 @@ Contributions welcome! Please:
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
+##  Author
+
+- **"Cerebros.cpp"** - Lead Developers 
 
 **Neuroevolution AI Lab**
 - Project: VinoGen-CyberCore
@@ -418,7 +420,7 @@ This project is licensed under the MIT License.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - PyTorch team for the neural network framework
 - Scikit-learn for preprocessing utilities
@@ -427,7 +429,7 @@ This project is licensed under the MIT License.
 
 ---
 
-## 📞 Support
+##  Support
 
 For issues, questions, or suggestions:
 - Open an issue on GitHub
