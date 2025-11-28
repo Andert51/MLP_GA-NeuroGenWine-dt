@@ -1,0 +1,69 @@
+# VinoGen-CyberCore .gitignore
+
+# Venv 
+venv/   
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Output files (optional - uncomment if you don't want to track outputs)
+# output/
+# *.png
+# *.gif
+# *.html
+
+# Data files (optional - uncomment if datasets are large)
+# data/*.csv
+# data/*.xlsx
+
+# Config files with sensitive info (optional)
+# config/secrets.yaml
+
+# PyTorch models (optional)
+# *.pth
+# *.pt
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
