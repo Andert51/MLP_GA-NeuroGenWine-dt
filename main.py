@@ -1290,7 +1290,6 @@ def main():
                 
             elif choice == '9':
                 # EXIT - Shutdown
-                system.ui.show_completion_banner()
                 system.ui.log("System shutdown complete", "SUCCESS")
                 break
             
@@ -1300,7 +1299,6 @@ def main():
                 
         except KeyboardInterrupt:
             system.ui.log("\nInterrupted by user", "WARNING")
-            system.ui.show_completion_banner()
             break
         except Exception as e:
             system.ui.log(f"Unexpected error: {e}", "ERROR")
