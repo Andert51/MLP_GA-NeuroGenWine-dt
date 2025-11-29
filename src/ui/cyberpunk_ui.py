@@ -383,3 +383,200 @@ class CyberpunkUI:
             f"[{self.colors['cyber_yellow']}]{message} (y/n): [/]"
         ).strip().lower()
         return response in ['y', 'yes']
+    
+    def show_main_menu(self) -> str:
+        """
+        Display interactive main menu and return user choice.
+        
+        Returns:
+            User's menu selection
+        """
+        self.clear_screen()
+        
+        # Title
+        title = pyfiglet.figlet_format("MATRIX", font="doom")
+        self.console.print(title, style=f"bold {self.colors['neon_green']}")
+        
+        menu_panel = Panel(
+            f"[bold {self.colors['electric_blue']}]█ VINOGEN-CYBERCORE CONTROL PANEL █[/]\n\n"
+            f"[{self.colors['neon_green']}][1] 🧬 NEW RUN[/] - Evolve New Neural Architecture\n"
+            f"[{self.colors['electric_blue']}][2] 💾 LOAD CORE[/] - Load Saved Model\n"
+            f"[{self.colors['deep_purple']}][3] 🔮 INFERENCE[/] - Test Model Predictions\n"
+            f"[{self.colors['hot_pink']}][4] 📊 VIEW MODELS[/] - List Saved Models\n"
+            f"[{self.colors['cyber_yellow']}][5] 🚪 EXIT[/] - Shutdown System\n\n"
+            f"[dim]Select your operation...[/]",
+            border_style=self.colors['neon_green'],
+            box=HEAVY,
+            expand=False,
+            padding=(1, 2)
+        )
+        
+        self.console.print(Align.center(menu_panel))
+        self.console.print()
+        
+        choice = self.console.input(
+            f"[bold {self.colors['cyber_yellow']}]>>> ENTER COMMAND: [/]"
+        ).strip()
+        
+        return choice
+    
+    def show_model_selection(self, models: List[Dict]) -> Optional[int]:
+        """
+        Display list of saved models for selection.
+        
+        Args:
+            models: List of model dictionaries
+            
+        Returns:
+            Selected model index or None
+        """
+        if not models:
+            self.log("No saved models found.", "warning")
+            return None
+        
+        self.clear_screen()
+        self.show_header("SAVED NEURAL CORES", "Select a model to load")
+        
+        table = Table(
+            title="",
+            box=DOUBLE,
+            border_style=self.colors['electric_blue'],
+            header_style=f"bold {self.colors['neon_green']}"
+        )
+        
+        table.add_column("#", style=self.colors['cyber_yellow'], justify="center")
+        table.add_column("Filename", style=self.colors['electric_blue'])
+        table.add_column("Timestamp", style=self.colors['deep_purple'])
+        table.add_column("Fitness", style=self.colors['neon_green'], justify="right")
+        table.add_column("Accuracy", style=self.colors['hot_pink'], justify="right")
+        
+        for idx, model in enumerate(models, 1):
+            table.add_row(
+                str(idx),
+                model['filename'][:40],
+                model['timestamp'][:19] if len(model['timestamp']) > 19 else model['timestamp'],
+                f"{model.get('fitness', 0):.4f}",
+                f"{model.get('accuracy', 0):.4f}"
+            )
+        
+        self.console.print(table)
+        self.console.print()
+        
+        choice = self.console.input(
+            f"[{self.colors['cyber_yellow']}]Select model number (or 'q' to quit): [/]"
+        ).strip()
+        
+        if choice.lower() == 'q':
+            return None
+        
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(models):
+                return idx
+            else:
+                self.log("Invalid selection", "error")
+                return None
+        except ValueError:
+            self.log("Invalid input", "error")
+            return None
+    
+    def show_inference_scanning(self):
+        """Display scanning animation for inference mode."""
+        self.clear_screen()
+        
+        from rich.text import Text
+        scanner_content = Text()
+        scanner_content.append("\n🔮 INFERENCE MODE ACTIVATED 🔮\n", style=f"bold {self.colors['neon_green']}")
+        scanner_content.append("\n")
+        scanner_content.append("  Scanning Neural Network State...\n", style=self.colors['cyber_yellow'])
+        scanner_content.append("  Loading Synaptic Weights...\n", style=self.colors['electric_blue'])
+        scanner_content.append("  Calibrating Activation Functions...\n", style=self.colors['hot_pink'])
+        scanner_content.append("\n")
+        scanner_content.append("       [████████████████]\n", style=f"bold {self.colors['success']}")
+        scanner_content.append("\n")
+        
+        panel = Panel(
+            Align.center(scanner_content),
+            border_style=self.colors['deep_purple'],
+            box=HEAVY,
+            padding=(1, 2)
+        )
+        
+        self.console.print(Align.center(panel))
+        time.sleep(2)
+    
+    def show_inference_results(self, results: List[Dict]):
+        """
+        Display inference results in a beautiful table.
+        
+        Args:
+            results: List of inference result dictionaries
+        """
+        self.clear_screen()
+        self.show_header("🔮 INFERENCE RESULTS", "Neural Network Predictions")
+        
+        table = Table(
+            box=DOUBLE,
+            border_style=self.colors['deep_purple'],
+            header_style=f"bold {self.colors['neon_green']}",
+            show_lines=True
+        )
+        
+        table.add_column("Sample", style=self.colors['cyber_yellow'], justify="center")
+        table.add_column("Input Features", style=self.colors['electric_blue'])
+        table.add_column("True Label", style=self.colors['neon_green'], justify="center")
+        table.add_column("Prediction", style=self.colors['hot_pink'], justify="center")
+        table.add_column("Confidence", style=self.colors['deep_purple'], justify="right")
+        table.add_column("Status", justify="center")
+        
+        for idx, result in enumerate(results, 1):
+            # Format input features (show first 3 values)
+            features = result.get('features', [])
+            feature_str = ", ".join([f"{f:.2f}" for f in features[:3]]) + "..."
+            
+            true_label = result.get('true_label', 'N/A')
+            prediction = result.get('prediction', 'N/A')
+            confidence = result.get('confidence', 0.0)
+            
+            # Determine status with color
+            if true_label == prediction:
+                status = f"[bold {self.colors['success']}]✓ MATCH[/]"
+            else:
+                status = f"[bold {self.colors['error']}]✗ ERROR[/]"
+            
+            table.add_row(
+                f"#{idx}",
+                feature_str,
+                str(true_label),
+                str(prediction),
+                f"{confidence:.1%}",
+                status
+            )
+        
+        self.console.print(table)
+        self.console.print()
+        
+        # Calculate accuracy
+        matches = sum(1 for r in results if r.get('true_label') == r.get('prediction'))
+        accuracy = matches / len(results) if results else 0
+        
+        acc_panel = Panel(
+            f"[bold {self.colors['neon_green']}]Inference Accuracy: {accuracy:.1%}[/]\n"
+            f"[{self.colors['electric_blue']}]Correct Predictions: {matches}/{len(results)}[/]",
+            border_style=self.colors['hot_pink'],
+            box=ROUNDED
+        )
+        
+        self.console.print(acc_panel)
+    
+    def show_loading_animation(self, message: str = "Loading", duration: float = 2.0):
+        """Display a loading animation."""
+        with Progress(
+            SpinnerColumn(spinner_name="dots", style=self.colors['electric_blue']),
+            TextColumn(f"[{self.colors['neon_green']}]{message}...[/]"),
+            console=self.console
+        ) as progress:
+            task = progress.add_task("", total=100)
+            for i in range(100):
+                time.sleep(duration / 100)
+                progress.update(task, advance=1)

@@ -203,6 +203,9 @@ class DataHandler:
         ]
         self.n_features = len(self.feature_names)
         
+        # Save synthetic data to CSV in input folder
+        self._save_synthetic_to_csv(X, y if self.task == "classification" else y)
+        
         # Split data
         self._split_data(X, y)
         
@@ -216,6 +219,25 @@ class DataHandler:
         }
         
         return True
+    
+    def _save_synthetic_to_csv(self, X: np.ndarray, y: np.ndarray):
+        """Save generated synthetic data to CSV file in input folder."""
+        try:
+            # Create input directory if it doesn't exist
+            input_dir = Path('input')
+            input_dir.mkdir(exist_ok=True, parents=True)
+            
+            # Create DataFrame
+            df = pd.DataFrame(X, columns=self.feature_names)
+            df['quality'] = y
+            
+            # Save to CSV
+            csv_path = input_dir / 'wine_quality_synthetic.csv'
+            df.to_csv(csv_path, index=False)
+            
+            print(f"[INFO] Synthetic dataset saved to: {csv_path}")
+        except Exception as e:
+            print(f"[WARNING] Could not save synthetic data to CSV: {e}")
     
     def _split_data(self, X: np.ndarray, y: np.ndarray):
         """Split data into train/val/test and normalize."""

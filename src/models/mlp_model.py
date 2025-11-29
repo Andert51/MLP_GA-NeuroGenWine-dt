@@ -75,9 +75,17 @@ class DynamicMLP(nn.Module):
         self.layers = nn.ModuleList()
         self.activations = []
         
-        # Parse genome
-        hidden_layers = genome['hidden_layers']  # List of neuron counts
-        activation_funcs = genome['activation_functions']  # List of activation names
+        # Parse genome - handle both Genome objects and dicts
+        if hasattr(genome, 'hidden_layers'):
+            # It's a Genome object
+            hidden_layers = genome.hidden_layers
+            activation_funcs = genome.activation_functions
+            learning_rate = genome.learning_rate
+        else:
+            # It's a dict
+            hidden_layers = genome['hidden_layers']
+            activation_funcs = genome['activation_functions']
+            learning_rate = genome['learning_rate']
         
         # Build architecture
         prev_dim = input_dim
@@ -99,7 +107,7 @@ class DynamicMLP(nn.Module):
             self.criterion = nn.MSELoss()
         
         # Optimizer (learning rate from genome)
-        self.learning_rate = genome['learning_rate']
+        self.learning_rate = learning_rate
         self.optimizer = optim.Adam(self.parameters(), lr=self.learning_rate)
         
         # Training history

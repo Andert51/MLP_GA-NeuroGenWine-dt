@@ -1,19 +1,22 @@
 """
-VinoGen-CyberCore: Visualization Engine
-Creates stunning visuals: topology graphs, learning curves, 3D landscapes, and neural animations.
+VinoGen-CyberCore: Enhanced Visualization Engine
+Robust plotting with error handling, advanced animations, and 3D landscapes.
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Prevent backend crashes
 import matplotlib.pyplot as plt
 import seaborn as sns
 import networkx as nx
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import imageio
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from sklearn.metrics import confusion_matrix, classification_report
+from tqdm import tqdm
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -492,6 +495,248 @@ class Visualizer:
         
         return str(filepath)
     
+    def animate_network_flow(self,
+                            model,
+                            sample_input: np.ndarray,
+                            genome: Dict,
+                            filename: str = "network_activation.gif",
+                            fps: int = 10):
+        """
+        Create advanced animated GIF showing data flowing through network with pulses.
+        
+        Args:
+            model: Trained neural network
+            sample_input: Single input sample
+            genome: Network architecture
+            filename: Output filename
+            fps: Frames per second
+        """
+        try:
+            print("[INFO] Generating network activation animation...")
+            
+            # Get activations
+            activations = model.get_activations(sample_input)
+            
+            # Create networkx graph
+            G = nx.DiGraph()
+            layers = [len(sample_input)] + genome['hidden_layers'] + [model.output_dim]
+            
+            # Add nodes with positions
+            pos = {}
+            node_id = 0
+            layer_nodes = []  # Track nodes per layer for edge creation
+            
+            for layer_idx, layer_size in enumerate(layers):
+                current_layer = []
+                for neuron_idx in range(min(layer_size, 20)):  # Limit visualization to 20 neurons per layer
+                    G.add_node(node_id, layer=layer_idx, neuron=neuron_idx)
+                    pos[node_id] = (layer_idx * 3, -neuron_idx * 0.5)
+                    current_layer.append(node_id)
+                    node_id += 1
+                layer_nodes.append(current_layer)
+            
+            # Add edges between consecutive layers
+            for layer_idx in range(len(layer_nodes) - 1):
+                for src_node in layer_nodes[layer_idx]:
+                    for dst_node in layer_nodes[layer_idx + 1]:
+                        G.add_edge(src_node, dst_node)
+            
+            # Create frames with progress bar
+            frames = []
+            for step in tqdm(range(len(activations) + 5), desc="  Generating frames"):
+                fig, ax = plt.subplots(figsize=(16, 10), facecolor=self.colors['dark_bg'])
+                ax.set_facecolor(self.colors['dark_bg'])
+                
+                # Determine active layer
+                active_layer = min(step, len(activations) - 1)
+                
+                # Draw nodes with activation-based colors
+                node_colors = []
+                node_sizes = []
+                
+                for layer_idx, layer_size in enumerate(layers):
+                    for neuron_idx in range(min(layer_size, 20)):
+                        if layer_idx < active_layer:
+                            # Fully activated (past layers)
+                            node_colors.append(self.colors['neon_green'])
+                            node_sizes.append(500)
+                        elif layer_idx == active_layer and active_layer < len(activations):
+                            # Currently activating
+                            act_val = activations[active_layer].flatten()[neuron_idx] if neuron_idx < len(activations[active_layer].flatten()) else 0
+                            intensity = np.clip(act_val, 0, 1)
+                            node_colors.append(plt.cm.plasma(intensity))
+                            node_sizes.append(300 + intensity * 500)
+                        else:
+                            # Not yet activated
+                            node_colors.append(self.colors['grid'])
+                            node_sizes.append(200)
+                
+                # Draw graph
+                nx.draw_networkx_nodes(G, pos, node_color=node_colors, node_size=node_sizes, ax=ax, alpha=0.8)
+                nx.draw_networkx_edges(G, pos, edge_color=self.colors['grid'], alpha=0.3, ax=ax, arrows=True, arrowsize=10)
+                
+                # Add layer labels
+                for layer_idx, layer_size in enumerate(layers):
+                    if layer_idx == 0:
+                        label = "INPUT"
+                        color = self.colors['electric_blue']
+                    elif layer_idx == len(layers) - 1:
+                        label = "OUTPUT"
+                        color = self.colors['hot_pink']
+                    else:
+                        label = f"HIDDEN {layer_idx}"
+                        color = self.colors['neon_green']
+                    
+                    ax.text(layer_idx * 3, 1, label, fontsize=14, fontweight='bold',
+                           color=color, ha='center')
+                
+                ax.set_title(f'NEURAL ACTIVATION FLOW - Step {step + 1}/{len(activations)}',
+                           fontsize=18, color=self.colors['neon_green'], fontweight='bold', pad=20)
+                ax.axis('off')
+                plt.tight_layout()
+                
+                # Convert to image
+                fig.canvas.draw()
+                buf = fig.canvas.buffer_rgba()
+                image = np.asarray(buf)[:, :, :3]
+                frames.append(image)
+                plt.close(fig)
+            
+            # Add pause frames
+            for _ in range(fps):
+                frames.append(frames[-1])
+            
+            # Save as GIF with memory management
+            filepath = self.output_dir / filename
+            imageio.mimsave(filepath, frames, fps=fps)
+            
+            # Clear frames from memory
+            frames.clear()
+            
+            return str(filepath)
+        
+        except Exception as e:
+            print(f"[WARNING] Failed to create Network Flow Animation: {e}")
+            return None
+    
+    def plot_probability_heatmap(self,
+                                model,
+                                samples: np.ndarray,
+                                true_labels: np.ndarray,
+                                filename: str = "probability_heatmap.png"):
+        """
+        Create probability/confidence heatmap for sample predictions.
+        
+        Args:
+            model: Trained model
+            samples: Input samples (n_samples x n_features)
+            true_labels: True labels
+            filename: Output filename
+        """
+        try:
+            import torch
+            
+            # Get predictions
+            model.eval()
+            with torch.no_grad():
+                if hasattr(samples, 'shape'):
+                    # Get device from model parameters
+                    device = next(model.parameters()).device if hasattr(model, 'parameters') else 'cpu'
+                    inputs = torch.FloatTensor(samples[:5]).to(device)  # First 5 samples
+                    outputs = model(inputs)
+                    
+                    if len(outputs.shape) > 1 and outputs.shape[1] > 1:
+                        # Classification - get probabilities
+                        probs = torch.softmax(outputs, dim=1).cpu().numpy()
+                    else:
+                        # Regression - normalize outputs
+                        probs = outputs.cpu().numpy().reshape(-1, 1)
+                        probs = (probs - probs.min()) / (probs.max() - probs.min() + 1e-8)
+            
+            # Create heatmap
+            fig, ax = plt.subplots(figsize=(12, 6), facecolor=self.colors['dark_bg'])
+            
+            sns.heatmap(probs, annot=True, fmt='.3f', cmap='plasma',
+                       cbar_kws={'label': 'Confidence'},
+                       ax=ax, linewidths=1, linecolor=self.colors['grid'])
+            
+            ax.set_title('NETWORK CONFIDENCE LEVELS', 
+                        fontsize=16, color=self.colors['neon_green'], fontweight='bold', pad=15)
+            ax.set_xlabel('Class', fontsize=12, color='white')
+            ax.set_ylabel('Sample', fontsize=12, color='white')
+            ax.tick_params(colors='white')
+            
+            filepath = self.output_dir / filename
+            plt.savefig(filepath, dpi=300, bbox_inches='tight',
+                       facecolor=self.colors['dark_bg'])
+            plt.close()
+            
+            return str(filepath)
+        
+        except Exception as e:
+            print(f"[WARNING] Failed to create Probability Heatmap: {e}")
+            return None
+    
+    def plot_regression_analysis(self,
+                                 y_true: np.ndarray,
+                                 y_pred: np.ndarray,
+                                 filename: str = "regression_analysis.png"):
+        """
+        Create regression analysis plot with predicted vs actual.
+        
+        Args:
+            y_true: True values
+            y_pred: Predicted values
+            filename: Output filename
+        """
+        try:
+            fig, axes = plt.subplots(1, 2, figsize=(16, 6), facecolor=self.colors['dark_bg'])
+            
+            # Scatter plot
+            axes[0].scatter(y_true, y_pred, alpha=0.6, c=self.colors['electric_blue'], s=50)
+            
+            # Perfect fit line
+            min_val = min(y_true.min(), y_pred.min())
+            max_val = max(y_true.max(), y_pred.max())
+            axes[0].plot([min_val, max_val], [min_val, max_val], 
+                        '--', color=self.colors['hot_pink'], linewidth=2, label='Perfect Fit')
+            
+            axes[0].set_xlabel('Actual Quality', fontsize=12, color='white')
+            axes[0].set_ylabel('Predicted Quality', fontsize=12, color='white')
+            axes[0].set_title('PREDICTED vs ACTUAL', fontsize=14, 
+                            color=self.colors['neon_green'], fontweight='bold')
+            axes[0].legend(facecolor=self.colors['dark_bg'], edgecolor=self.colors['grid'])
+            axes[0].grid(True, alpha=0.2, color=self.colors['grid'])
+            axes[0].set_facecolor(self.colors['dark_bg'])
+            
+            # Residuals
+            residuals = y_true - y_pred
+            axes[1].hist(residuals, bins=30, color=self.colors['deep_purple'], alpha=0.7, edgecolor='white')
+            axes[1].axvline(0, color=self.colors['hot_pink'], linestyle='--', linewidth=2)
+            axes[1].set_xlabel('Residual', fontsize=12, color='white')
+            axes[1].set_ylabel('Frequency', fontsize=12, color='white')
+            axes[1].set_title('RESIDUAL DISTRIBUTION', fontsize=14,
+                            color=self.colors['neon_green'], fontweight='bold')
+            axes[1].grid(True, alpha=0.2, color=self.colors['grid'])
+            axes[1].set_facecolor(self.colors['dark_bg'])
+            
+            for ax in axes:
+                ax.tick_params(colors='white')
+                for spine in ax.spines.values():
+                    spine.set_edgecolor(self.colors['grid'])
+            
+            plt.tight_layout()
+            filepath = self.output_dir / filename
+            plt.savefig(filepath, dpi=300, bbox_inches='tight',
+                       facecolor=self.colors['dark_bg'])
+            plt.close()
+            
+            return str(filepath)
+        
+        except Exception as e:
+            print(f"[WARNING] Failed to create Regression Analysis: {e}")
+            return None
+    
     def generate_report(self,
                        results: Dict,
                        filename: str = "final_report.txt"):
@@ -504,7 +749,7 @@ class Visualizer:
         """
         filepath = self.output_dir / filename
         
-        with open(filepath, 'w') as f:
+        with open(filepath, 'w', encoding='utf-8') as f:
             f.write("=" * 80 + "\n")
             f.write("  VINOGEN-CYBERCORE: NEUROEVOLUTION SYSTEM REPORT\n")
             f.write("=" * 80 + "\n\n")

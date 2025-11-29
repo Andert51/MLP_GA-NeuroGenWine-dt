@@ -14,7 +14,14 @@ from .helpers import (
     ensure_dir,
     EarlyStopping,
     create_ascii_art,
-    bytes_to_human_readable
+    bytes_to_human_readable,
+    # Phase 3 additions
+    save_model,
+    load_model,
+    list_saved_models,
+    create_markdown_report,
+    ensure_directories,
+    safe_divide
 )
 
 __all__ = [
@@ -30,5 +37,12 @@ __all__ = [
     'ensure_dir',
     'EarlyStopping',
     'create_ascii_art',
-    'bytes_to_human_readable'
+    'bytes_to_human_readable',
+    # Phase 3 exports
+    'save_model',
+    'load_model',
+    'list_saved_models',
+    'create_markdown_report',
+    'ensure_directories',
+    'safe_divide'
 ]
