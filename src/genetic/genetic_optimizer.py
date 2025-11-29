@@ -352,6 +352,18 @@ class GeneticOptimizer:
         layer_counts = [len(g.hidden_layers) for g in self.population]
         self.history['diversity'].append(np.std(layer_counts))
         
+        # Store full population data for animations
+        if 'population_data' not in self.history:
+            self.history['population_data'] = []
+        
+        self.history['population_data'].append({
+            'generation': generation,
+            'fitness_scores': fitnesses.copy(),
+            'architectures': [{'hidden_layers': g.hidden_layers.copy(), 
+                              'activations': g.activation_functions.copy(),
+                              'lr': g.learning_rate} for g in self.population]
+        })
+        
         # Elitism: Keep top performers
         new_population = self.population[:self.elite_count]
         

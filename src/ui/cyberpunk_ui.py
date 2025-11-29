@@ -60,8 +60,8 @@ class CyberpunkUI:
         self.clear_screen()
         
         # ASCII Banner
-        banner = pyfiglet.figlet_format("VINOGEN", font="slant")
-        subtitle = pyfiglet.figlet_format("CYBERCORE", font="digital")
+        banner = pyfiglet.figlet_format("NEUROGEN", font="slant")
+        subtitle = pyfiglet.figlet_format("WineLab", font="digital")
         
         self.console.print(banner, style=f"bold {self.colors['neon_green']}")
         self.console.print(subtitle, style=f"bold {self.colors['electric_blue']}")
@@ -71,11 +71,11 @@ class CyberpunkUI:
         boot_messages = [
             ("[SYSTEM]", "Initializing Neural Core...", self.colors['info']),
             ("[QUANTUM]", "Loading Genetic Algorithm Engine...", self.colors['electric_blue']),
-            ("[MATRIX]", "Establishing Data Pipeline...", self.colors['neon_green']),
+            ("[DATA]", "Establishing Data Pipeline...", self.colors['neon_green']),
             ("[CYBER]", "Activating Visualization Engine...", self.colors['deep_purple']),
             ("[NEURAL]", "Calibrating Synaptic Weights...", self.colors['hot_pink']),
             ("[AI]", "Deploying Evolution Protocol...", self.colors['cyber_yellow']),
-            ("[READY]", "VinoGen-CyberCore Online!", self.colors['success'])
+            ("[READY]", "NeuroGen WineLab Online!", self.colors['success'])
         ]
         
         with Progress(
@@ -328,7 +328,7 @@ class CyberpunkUI:
     
     def show_completion_banner(self):
         """Display mission complete banner."""
-        banner = pyfiglet.figlet_format("COMPLETE", font="banner3")
+        banner = pyfiglet.figlet_format("SUCCESS", font="banner3")
         
         panel = Panel(
             f"[bold {self.colors['success']}]{banner}[/]\n"
@@ -394,16 +394,20 @@ class CyberpunkUI:
         self.clear_screen()
         
         # Title
-        title = pyfiglet.figlet_format("MATRIX", font="doom")
+        title = pyfiglet.figlet_format("NEUROGEN", font="doom")
         self.console.print(title, style=f"bold {self.colors['neon_green']}")
         
         menu_panel = Panel(
-            f"[bold {self.colors['electric_blue']}]█ VINOGEN-CYBERCORE CONTROL PANEL █[/]\n\n"
+            f"[bold {self.colors['electric_blue']}]█ NEUROGEN WineLab - CONTROL PANEL █[/]\n\n"
             f"[{self.colors['neon_green']}][1] 🧬 NEW RUN[/] - Evolve New Neural Architecture\n"
             f"[{self.colors['electric_blue']}][2] 💾 LOAD CORE[/] - Load Saved Model\n"
-            f"[{self.colors['deep_purple']}][3] 🔮 INFERENCE[/] - Test Model Predictions\n"
-            f"[{self.colors['hot_pink']}][4] 📊 VIEW MODELS[/] - List Saved Models\n"
-            f"[{self.colors['cyber_yellow']}][5] 🚪 EXIT[/] - Shutdown System\n\n"
+            f"[{self.colors['deep_purple']}][3] INFERENCE[/] - Test Model Predictions\n"
+            f"[{self.colors['hot_pink']}][4] VIEW MODELS[/] - List Saved Models\n"
+            f"[{self.colors['cyber_yellow']}][5] DEEP ANALYSIS[/] - Advanced Dataset & Model Analysis\n"
+            f"[{self.colors['hot_pink']}][6] EXPLAIN MODEL[/] - What Does This Model Do?\n"
+            f"[{self.colors['neon_green']}][7] INTERACTIVE TEST[/] - Test with Custom Wine Sample\n"
+            f"[{self.colors['deep_purple']}][8] TOGGLE MODE[/] - Switch Classification/Regression\n"
+            f"[{self.colors['error']}][9] EXIT[/] - Shutdown System\n\n"
             f"[dim]Select your operation...[/]",
             border_style=self.colors['neon_green'],
             box=HEAVY,
@@ -580,3 +584,162 @@ class CyberpunkUI:
             for i in range(100):
                 time.sleep(duration / 100)
                 progress.update(task, advance=1)
+    
+    def get_wine_features_interactive(self) -> Optional[Dict[str, float]]:
+        """
+        Interactive input for wine features.
+        
+        Returns:
+            Dictionary with feature values or None if cancelled
+        """
+        self.clear_screen()
+        self.show_header("INTERACTIVE WINE TEST", "Enter wine characteristics for prediction")
+        
+        feature_names = [
+            "fixed_acidity", "volatile_acidity", "citric_acid", "residual_sugar",
+            "chlorides", "free_sulfur_dioxide", "total_sulfur_dioxide", "density",
+            "pH", "sulphates", "alcohol"
+        ]
+        
+        feature_ranges = {
+            "fixed_acidity": (4.0, 16.0, 7.0),
+            "volatile_acidity": (0.1, 1.6, 0.5),
+            "citric_acid": (0.0, 1.0, 0.3),
+            "residual_sugar": (0.5, 15.0, 2.5),
+            "chlorides": (0.01, 0.6, 0.08),
+            "free_sulfur_dioxide": (1.0, 72.0, 15.0),
+            "total_sulfur_dioxide": (6.0, 290.0, 46.0),
+            "density": (0.99, 1.01, 0.996),
+            "pH": (2.7, 4.0, 3.3),
+            "sulphates": (0.3, 2.0, 0.65),
+            "alcohol": (8.0, 15.0, 10.5)
+        }
+        
+        features = {}
+        
+        self.console.print(
+            f"[{self.colors['cyber_yellow']}]Enter values for each feature (or press Enter for default)[/]\n"
+        )
+        
+        for feature in feature_names:
+            min_val, max_val, default = feature_ranges[feature]
+            
+            while True:
+                prompt = (
+                    f"[{self.colors['neon_green']}]{feature}[/] "
+                    f"[dim]({min_val:.2f} - {max_val:.2f}, default: {default:.2f})[/]: "
+                )
+                
+                user_input = self.console.input(prompt).strip()
+                
+                if user_input.lower() == 'q':
+                    return None
+                
+                if user_input == "":
+                    features[feature] = default
+                    break
+                
+                try:
+                    value = float(user_input)
+                    if min_val <= value <= max_val:
+                        features[feature] = value
+                        break
+                    else:
+                        self.log(f"Value out of range ({min_val:.2f} - {max_val:.2f})", "WARNING")
+                except ValueError:
+                    self.log("Invalid number format", "ERROR")
+        
+        return features
+    
+    def show_prediction_result(self, features: Dict[str, float], prediction: any, 
+                              probabilities: Optional[list] = None, task: str = "classification"):
+        """
+        Display prediction result for interactive test.
+        
+        Args:
+            features: Input features
+            prediction: Model prediction
+            probabilities: Class probabilities (for classification)
+            task: Task type (classification or regression)
+        """
+        self.clear_screen()
+        self.show_header("PREDICTION RESULT", "Wine Quality Prediction")
+        
+        # Features table
+        feat_table = Table(
+            title="Input Features",
+            box=ROUNDED,
+            border_style=self.colors['electric_blue']
+        )
+        feat_table.add_column("Feature", style=self.colors['neon_green'])
+        feat_table.add_column("Value", style=self.colors['cyber_yellow'], justify="right")
+        
+        for feat, val in features.items():
+            feat_table.add_row(feat, f"{val:.3f}")
+        
+        self.console.print(feat_table)
+        self.console.print()
+        
+        # Prediction result
+        if task == "classification":
+            class_names = ["LOW Quality (3-5)", "MEDIUM Quality (5-7)", "HIGH Quality (7-9)"]
+            
+            result_text = f"[bold {self.colors['neon_green']}]Predicted Class: {prediction}[/]\n"
+            result_text += f"[{self.colors['electric_blue']}]{class_names[prediction]}[/]\n\n"
+            
+            if probabilities is not None:
+                result_text += f"[bold {self.colors['cyber_yellow']}]Class Probabilities:[/]\n"
+                for i, prob in enumerate(probabilities):
+                    bar_length = int(prob * 30)
+                    bar = "█" * bar_length + "░" * (30 - bar_length)
+                    result_text += f"  Class {i}: {bar} {prob:.1%}\n"
+        else:
+            result_text = f"[bold {self.colors['neon_green']}]Predicted Quality Score: {prediction:.2f}[/]\n"
+            result_text += f"[{self.colors['electric_blue']}]Wine quality on scale 0-10[/]"
+        
+        result_panel = Panel(
+            result_text,
+            title="[bold]🎯 PREDICTION[/]",
+            border_style=self.colors['hot_pink'],
+            box=DOUBLE
+        )
+        
+        self.console.print(result_panel)
+    
+    def show_mode_toggle(self, current_mode: str) -> bool:
+        """
+        Display mode toggle confirmation.
+        
+        Args:
+            current_mode: Current task mode
+            
+        Returns:
+            True if user confirms toggle, False otherwise
+        """
+        self.clear_screen()
+        self.show_header("MODE TOGGLE", "Switch between Classification and Regression")
+        
+        new_mode = "regression" if current_mode == "classification" else "classification"
+        
+        info_text = f"[bold {self.colors['cyber_yellow']}]Current Mode:[/] "
+        info_text += f"[{self.colors['neon_green']}]{current_mode.upper()}[/]\n\n"
+        info_text += f"[bold {self.colors['cyber_yellow']}]New Mode:[/] "
+        info_text += f"[{self.colors['hot_pink']}]{new_mode.upper()}[/]\n\n"
+        
+        if new_mode == "regression":
+            info_text += f"[{self.colors['electric_blue']}]Regression predicts continuous quality scores (0-10)[/]\n"
+        else:
+            info_text += f"[{self.colors['electric_blue']}]Classification predicts quality classes (LOW/MEDIUM/HIGH)[/]\n"
+        
+        info_text += f"\n[dim]Note: You'll need to run NEW RUN to train a model in the new mode[/]"
+        
+        panel = Panel(
+            info_text,
+            border_style=self.colors['deep_purple'],
+            box=DOUBLE
+        )
+        
+        self.console.print(panel)
+        self.console.print()
+        
+        return self.confirm(f"Switch to {new_mode.upper()} mode?")

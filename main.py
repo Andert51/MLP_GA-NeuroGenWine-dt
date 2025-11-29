@@ -8,8 +8,8 @@ This system combines:
 - Cyberpunk-themed CLI interface
 - Comprehensive visualizations
 
-Author: Neuroevolution AI Lab
-Version: 1.0.0
+Author: Cerebros.cpp team
+Version: 1.9.0
 """
 
 import sys
@@ -28,13 +28,14 @@ sys.path.insert(0, str(ROOT_DIR / 'src'))
 from src.data import DataHandler
 from src.models import DynamicMLP
 from src.genetic import GeneticOptimizer, Genome
-from src.visualization import Visualizer
+from src.visualization import Visualizer, DatasetAnalyzer, AdvancedVisualizer, ModelExplainer, AnimationGenerator
 from src.ui import CyberpunkUI
 from src.utils import (
     Config, MATH_EQUATIONS, set_random_seeds, 
     EarlyStopping, save_json, get_device,
     save_model, load_model, list_saved_models,
-    create_markdown_report, ensure_directories
+    create_markdown_report, ensure_directories,
+    MetricsTracker, PerformanceTimer
 )
 
 
@@ -60,7 +61,18 @@ class VinoGenCyberCore:
         self.config = config or Config()
         self.ui = CyberpunkUI()
         self.visualizer = Visualizer(output_dir=str(self.config.OUTPUT_DIR))
+        
+        # New advanced visualizers
+        self.dataset_analyzer = DatasetAnalyzer(output_dir=self.config.OUTPUT_DIR / "analysis")
+        self.advanced_viz = AdvancedVisualizer(output_dir=self.config.OUTPUT_DIR / "advanced")
+        self.explainer = ModelExplainer(output_dir=self.config.OUTPUT_DIR / "explanations")
+        self.animator = AnimationGenerator(output_dir=self.config.OUTPUT_DIR / "animations")
+        
         self.device = get_device()
+        
+        # Performance tracking
+        self.metrics_tracker = MetricsTracker(task=self.config.TASK)
+        self.perf_timer = PerformanceTimer()
         
         # Components
         self.data_handler = None
@@ -488,6 +500,53 @@ class VinoGenCyberCore:
                     fps=self.config.ANIMATION_FPS
                 )))
         
+        # NEW: Training curves animation GIF
+        if 'training_history' in self.results:
+            viz_tasks.append(("Training Animation GIF", lambda: self.animator.create_training_animation(
+                self.results['training_history'],
+                filename="training_evolution.gif",
+                fps=10
+            )))
+        
+        # NEW: Genetic evolution animation
+        if 'evolution_history' in self.results and 'population_data' in self.results['evolution_history']:
+            # Use actual population data
+            gen_data = []
+            for pop_data in self.results['evolution_history']['population_data']:
+                gen_data.append({
+                    'generation': pop_data['generation'] + 1,
+                    'fitness_scores': pop_data['fitness_scores'],
+                    'best_fitness': max(pop_data['fitness_scores']),
+                    'avg_fitness': np.mean(pop_data['fitness_scores']),
+                    'architectures': pop_data['architectures']
+                })
+            
+            if gen_data:
+                viz_tasks.append(("Genetic Evolution GIF", lambda: self.animator.create_genetic_evolution_animation(
+                    gen_data,
+                    filename="genetic_evolution.gif",
+                    fps=3
+                )))
+        elif 'evolution_history' in self.results:
+            # Fallback: use basic history data
+            gen_data = []
+            history = self.results['evolution_history']
+            for i in range(len(history['best_fitness'])):
+                gen_data.append({
+                    'generation': i + 1,
+                    'fitness_scores': [history['best_fitness'][i]] * 20,  # Placeholder
+                    'best_fitness': history['best_fitness'][i],
+                    'avg_fitness': history['avg_fitness'][i],
+                    'architectures': []
+                })
+            
+            if gen_data:
+                viz_tasks.append(("Genetic Evolution GIF", lambda: self.animator.create_genetic_evolution_animation(
+                    gen_data,
+                    filename="genetic_evolution.gif",
+                    fps=3
+                )))
+        
         # Learning curves
         if self.config.SAVE_LEARNING_CURVES and 'training_history' in self.results:
             viz_tasks.append(("Learning Curves", lambda: self.visualizer.plot_learning_curves(
@@ -748,6 +807,436 @@ class VinoGenCyberCore:
             self.ui.log(f"\nTotal models: {len(saved_models)}", "INFO")
         
         self.ui.pause()
+    
+    def explain_model(self):
+        """
+        Generate educational visualizations explaining what the model does.
+        
+        Shows:
+        - What task the model performs (classification vs regression)
+        - How inputs become outputs
+        - Example predictions with detailed breakdown
+        - Comparison between classification and regression
+        - Instructions for using the model
+        """
+        self.ui.show_header(
+            "MODEL EXPLANATION",
+            "Visual explanation of what this model does"
+        )
+        
+        try:
+            # Load data if not already loaded
+            if self.data_handler is None:
+                self.ui.log("Loading dataset...", "INFO")
+                data_path = self.config.DATASET_PATH if self.config.DATASET_PATH.exists() else None
+                self.data_handler = DataHandler(
+                    data_path=str(data_path) if data_path else None,
+                    task=self.config.TASK
+                )
+                if not self.data_handler.load_data():
+                    self.ui.log("Failed to load dataset", "ERROR")
+                    self.ui.pause()
+                    return
+            
+            self.ui.log("\nGenerating educational visualizations...", "SYSTEM")
+            paths = []
+            
+            # 1. Main explanation diagram
+            self.ui.log("\n[1/2] Creating model task explanation...", "INFO")
+            path1 = self.explainer.explain_model_task(
+                task=self.config.TASK,
+                n_classes=self.data_handler.n_classes if self.config.TASK == "classification" else 1,
+                feature_names=[
+                    'Acidez Fija', 'Acidez Volátil', 'Ácido Cítrico',
+                    'Azúcar Residual', 'Cloruros', 'SO₂ Libre',
+                    'SO₂ Total', 'Densidad', 'pH', 'Sulfatos', 'Alcohol'
+                ]
+            )
+            paths.append(('Model Task Explanation', path1))
+            self.ui.log(f"  ✓ Saved: {path1}", "SUCCESS")
+            
+            # 2. Example prediction (if model exists)
+            if self.loaded_model is not None or self.best_model is not None:
+                self.ui.log("\n[2/2] Creating example prediction breakdown...", "INFO")
+                
+                model = self.loaded_model if self.loaded_model is not None else self.best_model
+                
+                # Get a random test sample
+                data_splits = self.data_handler.get_data_splits()
+                idx = np.random.randint(0, len(data_splits['X_test']))
+                X_sample = data_splits['X_test'][idx]
+                y_true = data_splits['y_test'][idx]
+                
+                class_names = None
+                if self.config.TASK == "classification":
+                    if self.data_handler.n_classes == 3:
+                        class_names = ['BAJA', 'MEDIA', 'ALTA']
+                    else:
+                        class_names = [f'Clase {i}' for i in range(self.data_handler.n_classes)]
+                
+                path2 = self.explainer.explain_prediction_example(
+                    model=model,
+                    X_sample=X_sample,
+                    y_true=y_true,
+                    feature_names=[
+                        'Acidez Fija', 'Acidez Volátil', 'Ácido Cítrico',
+                        'Azúcar Residual', 'Cloruros', 'SO₂ Libre',
+                        'SO₂ Total', 'Densidad', 'pH', 'Sulfatos', 'Alcohol'
+                    ],
+                    task=self.config.TASK,
+                    class_names=class_names
+                )
+                paths.append(('Prediction Example', path2))
+                self.ui.log(f"  ✓ Saved: {path2}", "SUCCESS")
+            else:
+                self.ui.log("\n[2/2] Skipping prediction example (no model loaded)", "WARNING")
+            
+            # Summary
+            self.ui.log("\n" + "="*60, "SYSTEM")
+            self.ui.log("MODEL EXPLANATION COMPLETE!", "SUCCESS")
+            self.ui.log("="*60, "SYSTEM")
+            
+            self.ui.log(f"\nTotal visualizations created: {len(paths)}", "INFO")
+            
+            # Display paths table
+            from rich.table import Table
+            table = Table(title="\n📊 Generated Explanations")
+            table.add_column("#", style="cyan", justify="center")
+            table.add_column("Type", style="magenta")
+            table.add_column("Path", style="green")
+            
+            for i, (viz_type, path) in enumerate(paths, 1):
+                table.add_row(str(i), viz_type, str(path))
+            
+            self.ui.console.print(table)
+            
+            self.ui.log(f"\nAll explanations saved in: {self.config.OUTPUT_DIR / 'explanations'}/", "SUCCESS")
+            
+            # Explanation text
+            explanation = f"""
+
+📖 QUÉ MUESTRA CADA VISUALIZACIÓN:
+
+1. MODEL TASK EXPLANATION:
+   • Qué hace el modelo (clasificación de {self.data_handler.n_classes} clases o regresión)
+   • Cómo procesa las 11 características químicas
+   • Qué significa cada salida
+   • Comparación clasificación vs regresión
+   • Instrucciones de uso
+
+2. PREDICTION EXAMPLE (si hay modelo):
+   • Desglose detallado de una predicción
+   • Valores de entrada mostrados
+   • Salida del modelo explicada
+   • Importancia de cada característica
+   • Resultado final con interpretación
+
+💡 TU MODELO ACTUAL:
+   Tarea: {self.config.TASK.upper()}
+   {'Clasifica vinos en ' + str(self.data_handler.n_classes) + ' categorías de calidad' if self.config.TASK == 'classification' else 'Predice calidad exacta (0-10)'}
+
+🔧 PARA CAMBIAR A {'REGRESIÓN' if self.config.TASK == 'classification' else 'CLASIFICACIÓN'}:
+   Edita: src/utils/config.py
+   Cambia: TASK = "{'regression' if self.config.TASK == 'classification' else 'classification'}"
+"""
+            
+            self.ui.log(explanation, "INFO")
+            
+        except Exception as e:
+            self.ui.log(f"Error generating explanations: {e}", "ERROR")
+            import traceback
+            traceback.print_exc()
+        
+        self.ui.pause()
+    
+    def interactive_test(self):
+        """Test model with user-provided wine characteristics."""
+        self.ui.clear_screen()
+        self.ui.show_header("INTERACTIVE WINE TEST", "Test model with custom wine sample")
+        
+        # Check if model is loaded
+        model = self.loaded_model if self.loaded_model else self.best_model
+        
+        if model is None:
+            self.ui.log("No model available! Please run NEW RUN or LOAD CORE first.", "ERROR")
+            self.ui.pause()
+            return
+        
+        # Check if data handler exists (for feature names)
+        if self.data_handler is None:
+            self.ui.log("Loading dataset for feature information...", "SYSTEM")
+            data_path = self.config.DATASET_PATH if self.config.DATASET_PATH.exists() else None
+            self.data_handler = DataHandler(
+                data_path=str(data_path) if data_path else None,
+                task=self.config.TASK
+            )
+            if not self.data_handler.load_data():
+                self.ui.log("Failed to load dataset!", "ERROR")
+                self.ui.pause()
+                return
+        
+        # Get features from user
+        features_dict = self.ui.get_wine_features_interactive()
+        
+        if features_dict is None:
+            self.ui.log("Test cancelled", "WARNING")
+            return
+        
+        # Convert to numpy array in correct order
+        feature_names = [
+            "fixed_acidity", "volatile_acidity", "citric_acid", "residual_sugar",
+            "chlorides", "free_sulfur_dioxide", "total_sulfur_dioxide", "density",
+            "pH", "sulphates", "alcohol"
+        ]
+        features_array = np.array([[features_dict[name] for name in feature_names]])
+        
+        # Normalize features (using data handler's scaler)
+        if hasattr(self.data_handler, 'scaler') and self.data_handler.scaler is not None:
+            features_normalized = self.data_handler.scaler.transform(features_array)
+        else:
+            features_normalized = features_array
+        
+        # Make prediction
+        try:
+            import torch
+            model.eval()
+            with torch.no_grad():
+                features_tensor = torch.FloatTensor(features_normalized).to(self.device)
+                output = model(features_tensor)
+                
+                if self.config.TASK == "classification":
+                    probabilities = torch.softmax(output, dim=1).cpu().numpy()[0]
+                    prediction = int(torch.argmax(output, dim=1).cpu().numpy()[0])
+                    
+                    self.ui.show_prediction_result(
+                        features_dict, prediction, probabilities, 
+                        task=self.config.TASK
+                    )
+                else:
+                    prediction = float(output.cpu().numpy()[0][0])
+                    
+                    self.ui.show_prediction_result(
+                        features_dict, prediction, 
+                        task=self.config.TASK
+                    )
+            
+            self.ui.log("\n✓ Prediction completed successfully!", "SUCCESS")
+            
+        except Exception as e:
+            self.ui.log(f"Error making prediction: {e}", "ERROR")
+            import traceback
+            traceback.print_exc()
+        
+        self.ui.pause()
+    
+    def toggle_mode(self):
+        """Toggle between classification and regression modes."""
+        current_mode = self.config.TASK
+        
+        # Show confirmation dialog
+        if not self.ui.show_mode_toggle(current_mode):
+            self.ui.log("Mode toggle cancelled", "WARNING")
+            time.sleep(1)
+            return
+        
+        # Toggle the mode
+        new_mode = "regression" if current_mode == "classification" else "classification"
+        self.config.TASK = new_mode
+        
+        # Update config file
+        config_path = Path(__file__).parent / "src" / "utils" / "config.py"
+        
+        try:
+            # Read current config
+            with open(config_path, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+            
+            # Find and replace TASK line
+            for i, line in enumerate(lines):
+                if line.strip().startswith('TASK ='):
+                    lines[i] = f'    TASK = "{new_mode}"  # or "regression"\n'
+                    break
+            
+            # Write back
+            with open(config_path, 'w', encoding='utf-8') as f:
+                f.writelines(lines)
+            
+            self.ui.log(f"\n✓ Mode switched to {new_mode.upper()}!", "SUCCESS")
+            self.ui.log(f"Config file updated: {config_path}", "INFO")
+            self.ui.log("\nNote: You need to run NEW RUN to train a model in the new mode", "WARNING")
+            
+            # Reset any loaded models since they're for the wrong task
+            if self.loaded_model or self.best_model:
+                self.ui.log("Clearing loaded models (incompatible with new mode)", "WARNING")
+                self.loaded_model = None
+                self.best_model = None
+            
+            # Reset data handler to reload with new task
+            self.data_handler = None
+            self.metrics_tracker = MetricsTracker(task=new_mode)
+            
+        except Exception as e:
+            self.ui.log(f"Error updating config: {e}", "ERROR")
+            import traceback
+            traceback.print_exc()
+        
+        self.ui.pause()
+    
+    def deep_analysis(self):
+        """PHASE 3: Perform deep analysis of dataset and model."""
+        self.ui.show_header("DEEP ANALYSIS", "Advanced Dataset & Model Analysis")
+        
+        # Check if we have data
+        if self.data_handler is None:
+            self.ui.log("Loading dataset for analysis...", "SYSTEM")
+            data_path = self.config.DATASET_PATH if self.config.DATASET_PATH.exists() else None
+            self.data_handler = DataHandler(
+                data_path=str(data_path) if data_path else None,
+                task=self.config.TASK
+            )
+            if not self.data_handler.load_data():
+                self.ui.log("Failed to load dataset!", "ERROR")
+                self.ui.pause()
+                return
+        
+        # Get data
+        data_splits = self.data_handler.get_data_splits()
+        X_train = data_splits['X_train']
+        y_train = data_splits['y_train']
+        X_test = data_splits['X_test']
+        y_test = data_splits['y_test']
+        
+        self.ui.log("Starting comprehensive analysis...", "SYSTEM")
+        visualizations_created = []
+        
+        try:
+            # 1. Dataset Overview
+            self.ui.log("\n[1/8] Generating dataset overview...", "INFO")
+            overview_path = self.dataset_analyzer.plot_dataset_overview(
+                X_train, y_train,
+                feature_names=self.data_handler.feature_names if hasattr(self.data_handler, 'feature_names') else None
+            )
+            visualizations_created.append(("Dataset Overview", overview_path))
+            self.ui.log(f"  ✓ Saved: {overview_path}", "SUCCESS")
+            
+            # 2. Sample Visualization
+            self.ui.log("[2/8] Visualizing dataset samples...", "INFO")
+            samples_path = self.dataset_analyzer.plot_sample_visualization(
+                X_train, y_train, n_samples=10,
+                feature_names=self.data_handler.feature_names if hasattr(self.data_handler, 'feature_names') else None
+            )
+            visualizations_created.append(("Sample Visualization", samples_path))
+            self.ui.log(f"  ✓ Saved: {samples_path}", "SUCCESS")
+            
+            # Check if we have a model
+            model_to_analyze = self.loaded_model if self.loaded_model else self.best_model
+            
+            if model_to_analyze:
+                self.ui.log("\nModel found! Generating model visualizations...", "SYSTEM")
+                
+                # 3. Decision Boundary 2D (PCA)
+                self.ui.log("[3/8] Creating 2D decision boundary (PCA)...", "INFO")
+                db_2d_pca = self.advanced_viz.plot_decision_boundary_2d(
+                    model_to_analyze, X_test, y_test, reduction_method='pca'
+                )
+                visualizations_created.append(("Decision Boundary 2D (PCA)", db_2d_pca))
+                self.ui.log(f"  ✓ Saved: {db_2d_pca}", "SUCCESS")
+                
+                # 4. Decision Boundary 2D (t-SNE)
+                self.ui.log("[4/8] Creating 2D decision boundary (t-SNE)...", "INFO")
+                db_2d_tsne = self.advanced_viz.plot_decision_boundary_2d(
+                    model_to_analyze, X_test, y_test, reduction_method='tsne'
+                )
+                visualizations_created.append(("Decision Boundary 2D (t-SNE)", db_2d_tsne))
+                self.ui.log(f"  ✓ Saved: {db_2d_tsne}", "SUCCESS")
+                
+                # 5. Decision Boundary 3D
+                self.ui.log("[5/8] Creating 3D decision boundary...", "INFO")
+                db_3d = self.advanced_viz.plot_decision_boundary_3d(
+                    model_to_analyze, X_test, y_test
+                )
+                visualizations_created.append(("Decision Boundary 3D", db_3d))
+                self.ui.log(f"  ✓ Saved: {db_3d}", "SUCCESS")
+                
+                # 6. Activation Heatmap 3D (first layer)
+                self.ui.log("[6/8] Generating activation heatmap 3D...", "INFO")
+                act_heatmap = self.advanced_viz.plot_activation_heatmap_3d(
+                    model_to_analyze, X_test[:100], layer_idx=0
+                )
+                visualizations_created.append(("Activation Heatmap 3D", act_heatmap))
+                self.ui.log(f"  ✓ Saved: {act_heatmap}", "SUCCESS")
+                
+                # 7. Weight Heatmap 2D (first layer)
+                self.ui.log("[7/8] Creating weight heatmap 2D...", "INFO")
+                weight_heatmap = self.advanced_viz.plot_weight_heatmap_2d(
+                    model_to_analyze, layer_idx=0
+                )
+                visualizations_created.append(("Weight Heatmap 2D", weight_heatmap))
+                self.ui.log(f"  ✓ Saved: {weight_heatmap}", "SUCCESS")
+                
+                # 8. Prediction Confidence Analysis
+                self.ui.log("[8/8] Analyzing prediction confidence...", "INFO")
+                model_to_analyze.eval()
+                import torch
+                with torch.no_grad():
+                    y_pred = model_to_analyze.predict(X_test)
+                    
+                    # Get confidences
+                    X_test_tensor = torch.FloatTensor(X_test).to(
+                        next(model_to_analyze.parameters()).device
+                    )
+                    outputs = model_to_analyze(X_test_tensor)
+                    
+                    if self.config.TASK == 'classification':
+                        probs = torch.nn.functional.softmax(outputs, dim=1)
+                        confidences = probs.max(dim=1)[0].cpu().numpy()
+                    else:
+                        confidences = np.ones(len(y_pred))  # For regression
+                
+                conf_dist = self.advanced_viz.plot_prediction_confidence_distribution(
+                    y_test, y_pred, confidences
+                )
+                visualizations_created.append(("Confidence Analysis", conf_dist))
+                self.ui.log(f"  ✓ Saved: {conf_dist}", "SUCCESS")
+            else:
+                self.ui.log("\nNo model available. Skipping model visualizations.", "WARNING")
+                self.ui.log("Run option [1] NEW RUN or [2] LOAD CORE first.", "INFO")
+            
+            # Summary
+            self.ui.log("\n" + "="*60, "SUCCESS")
+            self.ui.log("DEEP ANALYSIS COMPLETE!", "SUCCESS")
+            self.ui.log("="*60, "SUCCESS")
+            self.ui.log(f"\nTotal visualizations created: {len(visualizations_created)}", "INFO")
+            
+            # Display list
+            from rich.table import Table
+            from rich.box import ROUNDED
+            
+            table = Table(
+                title="[bold cyan]Generated Visualizations[/]",
+                box=ROUNDED,
+                border_style="cyan"
+            )
+            table.add_column("#", style="yellow", justify="center")
+            table.add_column("Type", style="cyan")
+            table.add_column("Path", style="green")
+            
+            for idx, (viz_type, viz_path) in enumerate(visualizations_created, 1):
+                # Shorten path for display
+                short_path = str(viz_path).replace(str(self.config.OUTPUT_DIR), "output")
+                table.add_row(str(idx), viz_type, short_path)
+            
+            self.ui.console.print("\n")
+            self.ui.console.print(table)
+            
+            self.ui.log(f"\nAll visualizations saved in: {self.config.OUTPUT_DIR}", "INFO")
+            
+        except Exception as e:
+            self.ui.log(f"Error during analysis: {e}", "ERROR")
+            import traceback
+            traceback.print_exc()
+        
+        self.ui.pause()
 
 
 def main():
@@ -782,8 +1271,24 @@ def main():
             elif choice == '4':
                 # VIEW MODELS - List saved models
                 system.view_models()
-                
+            
             elif choice == '5':
+                # DEEP ANALYSIS - Advanced analysis
+                system.deep_analysis()
+            
+            elif choice == '6':
+                # EXPLAIN MODEL - Educational visualizations
+                system.explain_model()
+            
+            elif choice == '7':
+                # INTERACTIVE TEST - Test with custom sample
+                system.interactive_test()
+            
+            elif choice == '8':
+                # TOGGLE MODE - Switch classification/regression
+                system.toggle_mode()
+                
+            elif choice == '9':
                 # EXIT - Shutdown
                 system.ui.show_completion_banner()
                 system.ui.log("System shutdown complete", "SUCCESS")

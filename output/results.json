@@ -24,464 +24,2787 @@
   },
   "best_genome": {
     "hidden_layers": [
-      102
+      128
     ],
     "activation_functions": [
       "sigmoid"
     ],
-    "learning_rate": 0.0003594169724905928,
-    "fitness": 0.924,
-    "generation": 8
+    "learning_rate": 0.0016722608383438783,
+    "fitness": 0.923,
+    "generation": 6
   },
   "evolution_history": {
     "best_fitness": [
       0.919,
-      0.917,
       0.915,
-      0.915,
-      0.914,
+      0.911,
+      0.919,
+      0.921,
       0.92,
-      0.918,
+      0.923,
       0.92,
-      0.924
+      0.92
     ],
     "avg_fitness": [
-      0.89175,
-      0.89825,
-      0.9001500000000002,
-      0.9027000000000001,
-      0.8993,
-      0.90765,
-      0.9081999999999999,
-      0.9111999999999998,
-      0.9099
+      0.9004,
+      0.8989499999999999,
+      0.8978000000000002,
+      0.90195,
+      0.9048999999999999,
+      0.9066000000000001,
+      0.91275,
+      0.9116,
+      0.91285
     ],
     "diversity": [
-      1.4,
-      1.6271140095272978,
-      1.2083045973594573,
-      1.0908712114635715,
-      1.4966629547095767,
-      1.3190905958272918,
-      1.5580436450882882,
+      1.3379088160259651,
+      1.2288205727444508,
+      1.2835497652993437,
+      1.4448183276799889,
+      1.7578395831246945,
       1.6462077633154328,
-      1.6852299546352716
+      0.0,
+      0.0,
+      0.21794494717703372
+    ],
+    "population_data": [
+      {
+        "generation": 0,
+        "fitness_scores": [
+          0.919,
+          0.911,
+          0.91,
+          0.91,
+          0.91,
+          0.909,
+          0.907,
+          0.905,
+          0.905,
+          0.904,
+          0.901,
+          0.9,
+          0.9,
+          0.896,
+          0.892,
+          0.89,
+          0.89,
+          0.887,
+          0.883,
+          0.879
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              249,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.008494415664615852
+          },
+          {
+            "hidden_layers": [
+              44,
+              176,
+              250
+            ],
+            "activations": [
+              "sigmoid",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0037622146098087563
+          },
+          {
+            "hidden_layers": [
+              153,
+              158,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "relu",
+              "tanh"
+            ],
+            "lr": 0.0017478842391510335
+          },
+          {
+            "hidden_layers": [
+              41,
+              39,
+              111,
+              93
+            ],
+            "activations": [
+              "leaky_relu",
+              "tanh",
+              "relu",
+              "sigmoid"
+            ],
+            "lr": 0.007156693607754907
+          },
+          {
+            "hidden_layers": [
+              117,
+              34,
+              236,
+              25
+            ],
+            "activations": [
+              "tanh",
+              "relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0003341931612629714
+          },
+          {
+            "hidden_layers": [
+              204,
+              128
+            ],
+            "activations": [
+              "elu",
+              "sigmoid"
+            ],
+            "lr": 0.0013385897228082974
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              26
+            ],
+            "activations": [
+              "leaky_relu"
+            ],
+            "lr": 0.00882667932969053
+          },
+          {
+            "hidden_layers": [
+              86,
+              125,
+              27,
+              96,
+              158
+            ],
+            "activations": [
+              "relu",
+              "sigmoid",
+              "elu",
+              "elu",
+              "relu"
+            ],
+            "lr": 0.00465701575055284
+          },
+          {
+            "hidden_layers": [
+              122,
+              37,
+              62,
+              111,
+              161
+            ],
+            "activations": [
+              "elu",
+              "leaky_relu",
+              "tanh",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.004720205388350771
+          },
+          {
+            "hidden_layers": [
+              133,
+              110,
+              165
+            ],
+            "activations": [
+              "tanh",
+              "relu",
+              "sigmoid"
+            ],
+            "lr": 0.0007231371181030368
+          },
+          {
+            "hidden_layers": [
+              58,
+              149,
+              50
+            ],
+            "activations": [
+              "elu",
+              "tanh",
+              "tanh"
+            ],
+            "lr": 0.00914250886742201
+          },
+          {
+            "hidden_layers": [
+              119
+            ],
+            "activations": [
+              "elu"
+            ],
+            "lr": 0.004587446403621869
+          },
+          {
+            "hidden_layers": [
+              32,
+              140,
+              114
+            ],
+            "activations": [
+              "tanh",
+              "leaky_relu",
+              "tanh"
+            ],
+            "lr": 0.0008636590809852332
+          },
+          {
+            "hidden_layers": [
+              219,
+              250,
+              138
+            ],
+            "activations": [
+              "leaky_relu",
+              "tanh",
+              "leaky_relu"
+            ],
+            "lr": 0.004914916600451978
+          },
+          {
+            "hidden_layers": [
+              137,
+              55,
+              136,
+              247
+            ],
+            "activations": [
+              "relu",
+              "relu",
+              "sigmoid",
+              "sigmoid"
+            ],
+            "lr": 0.0016430780055403927
+          },
+          {
+            "hidden_layers": [
+              196,
+              193
+            ],
+            "activations": [
+              "leaky_relu",
+              "elu"
+            ],
+            "lr": 0.0018041952397578312
+          },
+          {
+            "hidden_layers": [
+              129
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.007309188725107626
+          },
+          {
+            "hidden_layers": [
+              152,
+              227
+            ],
+            "activations": [
+              "leaky_relu",
+              "sigmoid"
+            ],
+            "lr": 0.009168910876374638
+          },
+          {
+            "hidden_layers": [
+              57,
+              166,
+              195,
+              95,
+              90
+            ],
+            "activations": [
+              "tanh",
+              "sigmoid",
+              "leaky_relu",
+              "elu",
+              "leaky_relu"
+            ],
+            "lr": 0.0017696497791387963
+          }
+        ]
+      },
+      {
+        "generation": 1,
+        "fitness_scores": [
+          0.915,
+          0.914,
+          0.914,
+          0.912,
+          0.906,
+          0.905,
+          0.904,
+          0.9,
+          0.899,
+          0.896,
+          0.895,
+          0.895,
+          0.894,
+          0.894,
+          0.892,
+          0.892,
+          0.889,
+          0.889,
+          0.887,
+          0.887
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              44,
+              176,
+              250
+            ],
+            "activations": [
+              "sigmoid",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0037622146098087563
+          },
+          {
+            "hidden_layers": [
+              44,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.0061283151372123045
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              153,
+              158,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "relu",
+              "tanh"
+            ],
+            "lr": 0.0017478842391510335
+          },
+          {
+            "hidden_layers": [
+              40,
+              128
+            ],
+            "activations": [
+              "tanh",
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              249,
+              128
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid"
+            ],
+            "lr": 0.0049165026937120744
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              25
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.004414304412939412
+          },
+          {
+            "hidden_layers": [
+              41,
+              128
+            ],
+            "activations": [
+              "leaky_relu",
+              "sigmoid"
+            ],
+            "lr": 0.005064583905438897
+          },
+          {
+            "hidden_layers": [
+              249,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.008494415664615852
+          },
+          {
+            "hidden_layers": [
+              204
+            ],
+            "activations": [
+              "leaky_relu"
+            ],
+            "lr": 0.00495614823991842
+          },
+          {
+            "hidden_layers": [
+              204,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "elu",
+              "leaky_relu",
+              "leaky_relu",
+              "elu",
+              "elu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              117,
+              34,
+              236,
+              25
+            ],
+            "activations": [
+              "tanh",
+              "relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0003341931612629714
+          },
+          {
+            "hidden_layers": [
+              39,
+              111,
+              93
+            ],
+            "activations": [
+              "tanh",
+              "relu",
+              "sigmoid"
+            ],
+            "lr": 0.004247641665281602
+          },
+          {
+            "hidden_layers": [
+              86,
+              125,
+              27,
+              96,
+              158
+            ],
+            "activations": [
+              "relu",
+              "sigmoid",
+              "elu",
+              "elu",
+              "relu"
+            ],
+            "lr": 0.00465701575055284
+          },
+          {
+            "hidden_layers": [
+              41,
+              39,
+              62,
+              111,
+              161
+            ],
+            "activations": [
+              "leaky_relu",
+              "tanh",
+              "tanh",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.005938449498052839
+          },
+          {
+            "hidden_layers": [
+              153,
+              158,
+              229,
+              172
+            ],
+            "activations": [
+              "leaky_relu",
+              "relu",
+              "relu",
+              "tanh"
+            ],
+            "lr": 0.0017478842391510335
+          },
+          {
+            "hidden_layers": [
+              249,
+              176,
+              250
+            ],
+            "activations": [
+              "leaky_relu",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.006015512509009524
+          },
+          {
+            "hidden_layers": [
+              122,
+              37,
+              111,
+              93
+            ],
+            "activations": [
+              "elu",
+              "leaky_relu",
+              "relu",
+              "sigmoid"
+            ],
+            "lr": 0.005938449498052839
+          },
+          {
+            "hidden_layers": [
+              41,
+              39,
+              111,
+              93
+            ],
+            "activations": [
+              "leaky_relu",
+              "tanh",
+              "relu",
+              "sigmoid"
+            ],
+            "lr": 0.007156693607754907
+          },
+          {
+            "hidden_layers": [
+              113,
+              157
+            ],
+            "activations": [
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.004414304412939412
+          }
+        ]
+      },
+      {
+        "generation": 2,
+        "fitness_scores": [
+          0.911,
+          0.911,
+          0.909,
+          0.908,
+          0.908,
+          0.908,
+          0.907,
+          0.906,
+          0.9,
+          0.9,
+          0.899,
+          0.899,
+          0.895,
+          0.89,
+          0.89,
+          0.885,
+          0.885,
+          0.884,
+          0.882,
+          0.879
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0032101181834094357
+          },
+          {
+            "hidden_layers": [
+              40,
+              128
+            ],
+            "activations": [
+              "tanh",
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              44,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.0061283151372123045
+          },
+          {
+            "hidden_layers": [
+              44
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0061283151372123045
+          },
+          {
+            "hidden_layers": [
+              153,
+              158,
+              201,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "sigmoid",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0019420493602637999
+          },
+          {
+            "hidden_layers": [
+              44,
+              128
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid"
+            ],
+            "lr": 0.00552240891546219
+          },
+          {
+            "hidden_layers": [
+              44,
+              128
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid"
+            ],
+            "lr": 0.0044811880487674914
+          },
+          {
+            "hidden_layers": [
+              44,
+              176,
+              250
+            ],
+            "activations": [
+              "sigmoid",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0037622146098087563
+          },
+          {
+            "hidden_layers": [
+              114,
+              249,
+              132
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.0059241622015342235
+          },
+          {
+            "hidden_layers": [
+              204,
+              128
+            ],
+            "activations": [
+              "leaky_relu",
+              "sigmoid"
+            ],
+            "lr": 0.0033684223718913877
+          },
+          {
+            "hidden_layers": [
+              44,
+              176,
+              250
+            ],
+            "activations": [
+              "relu",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0037622146098087563
+          },
+          {
+            "hidden_layers": [
+              153,
+              158,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "relu",
+              "tanh"
+            ],
+            "lr": 0.0017478842391510335
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              191,
+              25
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "elu"
+            ],
+            "lr": 0.0032101181834094357
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              25
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.004414304412939412
+          },
+          {
+            "hidden_layers": [
+              44,
+              176,
+              250
+            ],
+            "activations": [
+              "sigmoid",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0037622146098087563
+          },
+          {
+            "hidden_layers": [
+              117,
+              188
+            ],
+            "activations": [
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0048661344606749524
+          },
+          {
+            "hidden_layers": [
+              41,
+              176,
+              250
+            ],
+            "activations": [
+              "leaky_relu",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.004413399257623827
+          },
+          {
+            "hidden_layers": [
+              41,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "leaky_relu",
+              "leaky_relu",
+              "leaky_relu",
+              "elu",
+              "elu"
+            ],
+            "lr": 0.002545810760077494
+          }
+        ]
+      },
+      {
+        "generation": 3,
+        "fitness_scores": [
+          0.919,
+          0.916,
+          0.916,
+          0.915,
+          0.912,
+          0.91,
+          0.91,
+          0.906,
+          0.906,
+          0.906,
+          0.902,
+          0.902,
+          0.901,
+          0.901,
+          0.9,
+          0.896,
+          0.895,
+          0.891,
+          0.884,
+          0.851
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001807155099303839
+          },
+          {
+            "hidden_layers": [
+              44,
+              128
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid"
+            ],
+            "lr": 0.0030767244435556847
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              191,
+              25
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "elu"
+            ],
+            "lr": 0.0032101181834094357
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              179,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0033905535817856883
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0032101181834094357
+          },
+          {
+            "hidden_layers": [
+              40,
+              128
+            ],
+            "activations": [
+              "tanh",
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40,
+              132
+            ],
+            "activations": [
+              "tanh",
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              44,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.0061283151372123045
+          },
+          {
+            "hidden_layers": [
+              48,
+              128
+            ],
+            "activations": [
+              "tanh",
+              "elu"
+            ],
+            "lr": 0.0030767244435556847
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "leaky_relu"
+            ],
+            "lr": 0.0024381638336141882
+          },
+          {
+            "hidden_layers": [
+              34,
+              236,
+              177,
+              118
+            ],
+            "activations": [
+              "relu",
+              "elu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.003923752194047883
+          },
+          {
+            "hidden_layers": [
+              158,
+              201,
+              229,
+              172
+            ],
+            "activations": [
+              "relu",
+              "sigmoid",
+              "relu",
+              "leaky_relu"
+            ],
+            "lr": 0.001807155099303839
+          },
+          {
+            "hidden_layers": [
+              44,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.0061283151372123045
+          },
+          {
+            "hidden_layers": [
+              40,
+              176,
+              250
+            ],
+            "activations": [
+              "sigmoid",
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.0027432798878015436
+          },
+          {
+            "hidden_layers": [
+              40,
+              128
+            ],
+            "activations": [
+              "tanh",
+              "leaky_relu"
+            ],
+            "lr": 0.002109036507603912
+          },
+          {
+            "hidden_layers": [
+              44,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.005809572768421681
+          },
+          {
+            "hidden_layers": [
+              44,
+              125,
+              181,
+              177,
+              118
+            ],
+            "activations": [
+              "leaky_relu",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.002884073281844108
+          }
+        ]
+      },
+      {
+        "generation": 4,
+        "fitness_scores": [
+          0.921,
+          0.919,
+          0.917,
+          0.916,
+          0.916,
+          0.914,
+          0.914,
+          0.91,
+          0.91,
+          0.908,
+          0.903,
+          0.902,
+          0.898,
+          0.898,
+          0.897,
+          0.894,
+          0.892,
+          0.892,
+          0.892,
+          0.885
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              179,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "sigmoid",
+              "elu"
+            ],
+            "lr": 0.0034140663023572047
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              158,
+              201,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid",
+              "relu",
+              "leaky_relu"
+            ],
+            "lr": 0.001807155099303839
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              107
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001807155099303839
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0019261666073597924
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              198,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0016035697877331105
+          },
+          {
+            "hidden_layers": [
+              102
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0025657892928005665
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              179,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0033905535817856883
+          },
+          {
+            "hidden_layers": [
+              44,
+              125,
+              207,
+              184,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0025413281987175717
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              179,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0033905535817856883
+          },
+          {
+            "hidden_layers": [
+              188,
+              40
+            ],
+            "activations": [
+              "tanh",
+              "sigmoid"
+            ],
+            "lr": 0.0025920286355338874
+          },
+          {
+            "hidden_layers": [
+              18,
+              157
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu"
+            ],
+            "lr": 0.0061283151372123045
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              40,
+              128
+            ],
+            "activations": [
+              "leaky_relu",
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              17,
+              236,
+              177,
+              147,
+              118
+            ],
+            "activations": [
+              "relu",
+              "elu",
+              "relu",
+              "leaky_relu",
+              "elu"
+            ],
+            "lr": 0.003923752194047883
+          },
+          {
+            "hidden_layers": [
+              44,
+              157
+            ],
+            "activations": [
+              "tanh",
+              "relu"
+            ],
+            "lr": 0.006104187927300989
+          }
+        ]
+      },
+      {
+        "generation": 5,
+        "fitness_scores": [
+          0.92,
+          0.918,
+          0.918,
+          0.914,
+          0.914,
+          0.913,
+          0.913,
+          0.912,
+          0.912,
+          0.911,
+          0.91,
+          0.909,
+          0.908,
+          0.903,
+          0.896,
+          0.896,
+          0.894,
+          0.892,
+          0.89,
+          0.889
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              115
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001769206497333474
+          },
+          {
+            "hidden_layers": [
+              184
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0019261666073597924
+          },
+          {
+            "hidden_layers": [
+              33
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              138
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001807155099303839
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              107
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              151
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              149,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "sigmoid",
+              "elu"
+            ],
+            "lr": 0.0034140663023572047
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              179,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "sigmoid",
+              "elu"
+            ],
+            "lr": 0.0034140663023572047
+          },
+          {
+            "hidden_layers": [
+              98,
+              90
+            ],
+            "activations": [
+              "elu",
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              158,
+              201,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid",
+              "relu",
+              "leaky_relu"
+            ],
+            "lr": 0.001807155099303839
+          },
+          {
+            "hidden_layers": [
+              242,
+              160
+            ],
+            "activations": [
+              "leaky_relu",
+              "sigmoid"
+            ],
+            "lr": 0.002113748175200706
+          },
+          {
+            "hidden_layers": [
+              188,
+              201,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "sigmoid",
+              "relu",
+              "leaky_relu"
+            ],
+            "lr": 0.000956107084812557
+          },
+          {
+            "hidden_layers": [
+              40,
+              125,
+              207,
+              177,
+              118
+            ],
+            "activations": [
+              "tanh",
+              "leaky_relu",
+              "leaky_relu",
+              "relu",
+              "elu"
+            ],
+            "lr": 0.0020059319538794592
+          },
+          {
+            "hidden_layers": [
+              249,
+              34,
+              236,
+              179,
+              118
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "elu",
+              "sigmoid",
+              "elu"
+            ],
+            "lr": 0.0034140663023572047
+          },
+          {
+            "hidden_layers": [
+              201,
+              229,
+              172
+            ],
+            "activations": [
+              "sigmoid",
+              "relu",
+              "leaky_relu"
+            ],
+            "lr": 0.0013750951127700947
+          }
+        ]
+      },
+      {
+        "generation": 6,
+        "fitness_scores": [
+          0.923,
+          0.919,
+          0.919,
+          0.919,
+          0.918,
+          0.917,
+          0.917,
+          0.915,
+          0.915,
+          0.915,
+          0.915,
+          0.914,
+          0.911,
+          0.911,
+          0.91,
+          0.909,
+          0.908,
+          0.907,
+          0.897,
+          0.896
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              156
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001769206497333474
+          },
+          {
+            "hidden_layers": [
+              198
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0015975742596018284
+          },
+          {
+            "hidden_layers": [
+              115
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.00189182072980122
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              33
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001789651560643618
+          },
+          {
+            "hidden_layers": [
+              47
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              115
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              65
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              184
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0019261666073597924
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001769206497333474
+          },
+          {
+            "hidden_layers": [
+              183
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "relu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "relu"
+            ],
+            "lr": 0.002401641231504251
+          }
+        ]
+      },
+      {
+        "generation": 7,
+        "fitness_scores": [
+          0.92,
+          0.92,
+          0.919,
+          0.918,
+          0.918,
+          0.916,
+          0.915,
+          0.915,
+          0.915,
+          0.914,
+          0.914,
+          0.913,
+          0.912,
+          0.912,
+          0.909,
+          0.908,
+          0.902,
+          0.901,
+          0.897,
+          0.894
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              33
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0020485023148269855
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001790593398505078
+          },
+          {
+            "hidden_layers": [
+              159
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              228
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0015975742596018284
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001789651560643618
+          },
+          {
+            "hidden_layers": [
+              109
+            ],
+            "activations": [
+              "elu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0019462660636594277
+          },
+          {
+            "hidden_layers": [
+              156
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001769206497333474
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0024281773991225424
+          },
+          {
+            "hidden_layers": [
+              141
+            ],
+            "activations": [
+              "elu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "leaky_relu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              109
+            ],
+            "activations": [
+              "leaky_relu"
+            ],
+            "lr": 0.0012843702995215507
+          },
+          {
+            "hidden_layers": [
+              156
+            ],
+            "activations": [
+              "relu"
+            ],
+            "lr": 0.001769206497333474
+          },
+          {
+            "hidden_layers": [
+              65
+            ],
+            "activations": [
+              "relu"
+            ],
+            "lr": 0.0016722608383438783
+          }
+        ]
+      },
+      {
+        "generation": 8,
+        "fitness_scores": [
+          0.92,
+          0.919,
+          0.919,
+          0.918,
+          0.918,
+          0.918,
+          0.917,
+          0.916,
+          0.913,
+          0.913,
+          0.913,
+          0.912,
+          0.912,
+          0.912,
+          0.911,
+          0.91,
+          0.909,
+          0.905,
+          0.905,
+          0.897
+        ],
+        "architectures": [
+          {
+            "hidden_layers": [
+              33
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0020485023148269855
+          },
+          {
+            "hidden_layers": [
+              128,
+              241
+            ],
+            "activations": [
+              "sigmoid",
+              "relu"
+            ],
+            "lr": 0.0020485023148269855
+          },
+          {
+            "hidden_layers": [
+              228
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0015975742596018284
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001789651560643618
+          },
+          {
+            "hidden_layers": [
+              110
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0020485023148269855
+          },
+          {
+            "hidden_layers": [
+              156
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              49
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              104
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.001790593398505078
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0022022374987472546
+          },
+          {
+            "hidden_layers": [
+              40
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0019462660636594277
+          },
+          {
+            "hidden_layers": [
+              160
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.003117192834219067
+          },
+          {
+            "hidden_layers": [
+              109
+            ],
+            "activations": [
+              "elu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              128
+            ],
+            "activations": [
+              "tanh"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              167
+            ],
+            "activations": [
+              "sigmoid"
+            ],
+            "lr": 0.0019334319869835533
+          },
+          {
+            "hidden_layers": [
+              104
+            ],
+            "activations": [
+              "elu"
+            ],
+            "lr": 0.0016722608383438783
+          },
+          {
+            "hidden_layers": [
+              156
+            ],
+            "activations": [
+              "relu"
+            ],
+            "lr": 0.001769206497333474
+          }
+        ]
+      }
     ]
   },
   "training_history": {
     "train_loss": [
-      0.7433556416567336,
-      0.5090678286679248,
-      0.47448132932186127,
-      0.454350213262629,
-      0.4348816695682546,
-      0.4176367589450897,
-      0.40060652094952603,
-      0.3850077953427396,
-      0.3714700044786676,
-      0.3588480028383275,
-      0.34750839734965183,
-      0.33872933051687604,
-      0.32968752545879243,
-      0.32206516530602536,
-      0.3153287444184435,
-      0.30798758281038163,
-      0.30240819080078857,
-      0.2970170541171064,
-      0.2911669367012825,
-      0.28540109716197276,
-      0.2820950507166538,
-      0.2782687112847541,
-      0.2752721127360425,
-      0.2724044450578537,
-      0.26910783041347847,
-      0.26687485138152506,
-      0.2643802223845999,
-      0.262141763688402,
-      0.2599637169945747,
-      0.25994251311776484,
-      0.2584571988975748,
-      0.2557411525160708,
-      0.25537003132891145,
-      0.2547465114200369,
-      0.2528415020317473,
-      0.2516719249493264,
-      0.25140970168595617,
-      0.25046621207544145,
-      0.24969449615541925,
-      0.24885410577692885,
-      0.24803644101670447,
-      0.24766331665376398,
-      0.2477481463488112,
-      0.24663668625215265,
-      0.24616854201923025,
-      0.2456461799905655,
-      0.24538296175763963,
-      0.2450573612400826,
-      0.244581271993353,
-      0.24443026005904725,
-      0.24390299293272039,
-      0.24360479406536895,
-      0.2431720495223999,
-      0.24216136994197013,
-      0.24330727121931442,
-      0.24207260570627578,
-      0.2423693817505177,
-      0.2414364375253307,
-      0.2415897399979703,
-      0.24127112495455336,
-      0.2425205315205645,
-      0.24099279464559353,
-      0.24037556235302002,
-      0.24160400881095134,
-      0.2401766597907594,
-      0.24064852495459801,
-      0.24013511360959805,
-      0.24022521308444916,
-      0.23970983185349626,
-      0.23974301927584282,
-      0.23982500649513083,
-      0.24003575623352477,
-      0.23946562567923932,
-      0.23901265855640808,
-      0.23952198765696364,
-      0.23978430199179243,
-      0.23942374834354888,
-      0.2395354345678649,
-      0.2393435915496121,
-      0.2392135088906643,
-      0.23875851572511045,
-      0.2392660675055169,
-      0.23871361781307993,
-      0.23875450477638144,
-      0.23871846481206568,
-      0.23821980506181717,
-      0.23812574683193197,
-      0.2392585465407118,
-      0.23823760806563052,
-      0.23825483832587588,
-      0.23817339317595704,
-      0.2383839463854724,
-      0.23817570265778837,
-      0.23812123911177857,
-      0.23856513447901037,
-      0.23757449418623397,
-      0.2373748428802541,
-      0.23742208835926462,
-      0.23802263892077385,
-      0.23747484195739665
+      0.46588647825286744,
+      0.363229308832199,
+      0.30998748366503004,
+      0.28115738579567445,
+      0.2654126042381246,
+      0.2578753127538143,
+      0.2519244806088032,
+      0.25052319522550764,
+      0.24795862089129203,
+      0.24652966064341525,
+      0.24788822312938405,
+      0.24364960027184893,
+      0.24474619967030717,
+      0.24464148893318277,
+      0.24251644376744616,
+      0.24242751347891828,
+      0.24588629999693404,
+      0.24456648370052905,
+      0.24150522869635135,
+      0.24280180001353963,
+      0.24204933857347102,
+      0.2412001870255521,
+      0.2420959584414959,
+      0.243404399801759,
+      0.23993464432498243,
+      0.24233563735764077,
+      0.24123539827129942,
+      0.2407758318363352,
+      0.23840647967571907,
+      0.24242479512666135,
+      0.23907099640432825,
+      0.23983691589153827,
+      0.23907417693036667,
+      0.23997344060781153,
+      0.23675917853858877,
+      0.24062601603726122,
+      0.23723212827710397,
+      0.24018334676610661,
+      0.2375526044597017,
+      0.2382847434504235,
+      0.24004574730358225,
+      0.24043047776881685,
+      0.23640461832760495,
+      0.23871156945824623,
+      0.23970368571896503,
+      0.23694794918311404,
+      0.2398055523951003,
+      0.23879003247365038,
+      0.23676685251771135,
+      0.23637574491031627,
+      0.2373459757642543,
+      0.23597157294762897,
+      0.2380686046436746,
+      0.23552496017927818,
+      0.2363239958723809,
+      0.2360151176281432,
+      0.23905882104597193,
+      0.23721114744214303,
+      0.23558711395301718,
+      0.2362755836641535,
+      0.23529146809844262,
+      0.2333037754164097,
+      0.2344733752468799,
+      0.2331874966621399,
+      0.2348609450174139,
+      0.23186170591160338,
+      0.23437375274110347,
+      0.23311187532988,
+      0.23255802912915008,
+      0.23140949407156478,
+      0.23267949214006992,
+      0.23146278799531309,
+      0.23324015692986072,
+      0.2310851366913065,
+      0.22969414650442752,
+      0.23023640570488382,
+      0.23306976544096114,
+      0.23014839362115302,
+      0.23066827670690862,
+      0.22876990697485336,
+      0.22735663879900536,
+      0.22938999858625392,
+      0.22964596871207368,
+      0.2281036545780111,
+      0.23074429949864428,
+      0.22784203362274677,
+      0.22962485023952545,
+      0.22781095217834127,
+      0.22797529827407065,
+      0.22996733068151676,
+      0.2252608800029501,
+      0.22811676117968052,
+      0.22966260566039287,
+      0.22412883109868842,
+      0.22376945517719427,
+      0.2230926321304225,
+      0.2234926643048195,
+      0.22317706658802133,
+      0.2225304455991755,
+      0.22253708422501037
     ],
     "val_loss": [
-      0.5418996214866638,
-      0.4859682321548462,
-      0.4607160687446594,
-      0.44109636545181274,
-      0.42103856801986694,
-      0.402029424905777,
-      0.3845248222351074,
-      0.36828872561454773,
-      0.35369884967803955,
-      0.34086689352989197,
-      0.33060309290885925,
-      0.31996652483940125,
-      0.3107028901576996,
-      0.30216583609580994,
-      0.2953186631202698,
-      0.2874363958835602,
-      0.2808099091053009,
-      0.2749117910861969,
-      0.2698043882846832,
-      0.2649720013141632,
-      0.25995948910713196,
-      0.25551366806030273,
-      0.25227782130241394,
-      0.24947357177734375,
-      0.24719657003879547,
-      0.24316148459911346,
-      0.2406899333000183,
-      0.23916763067245483,
-      0.23759713768959045,
-      0.23531833291053772,
-      0.23411265015602112,
-      0.23189395666122437,
-      0.23049889504909515,
-      0.2293706238269806,
-      0.22843483090400696,
-      0.22715923190116882,
-      0.22686715424060822,
-      0.22552110254764557,
-      0.2244608849287033,
-      0.22457139194011688,
-      0.22326721251010895,
-      0.22236566245555878,
-      0.22183369100093842,
-      0.22142532467842102,
-      0.2212880253791809,
-      0.22010351717472076,
-      0.2195952832698822,
-      0.21942873299121857,
-      0.21888822317123413,
-      0.21873678267002106,
-      0.21829038858413696,
-      0.2180747538805008,
-      0.2177116870880127,
-      0.2198888212442398,
-      0.21764183044433594,
-      0.21695926785469055,
-      0.21813514828681946,
-      0.21659213304519653,
-      0.2164638191461563,
-      0.21652354300022125,
-      0.2159644365310669,
-      0.2161543071269989,
-      0.21701505780220032,
-      0.21593207120895386,
-      0.21545232832431793,
-      0.2154175192117691,
-      0.21528877317905426,
-      0.21509528160095215,
-      0.21648043394088745,
-      0.21486641466617584,
-      0.21470800042152405,
-      0.2145589143037796,
-      0.21478934586048126,
-      0.21457770466804504,
-      0.2159205675125122,
-      0.21445970237255096,
-      0.21462583541870117,
-      0.21449647843837738,
-      0.21550904214382172,
-      0.21504181623458862,
-      0.21449407935142517,
-      0.21420343220233917,
-      0.21440662443637848,
-      0.21440373361110687,
-      0.21417325735092163,
-      0.21420125663280487,
-      0.21433204412460327,
-      0.21416932344436646,
-      0.2139595001935959,
-      0.21429193019866943,
-      0.21432194113731384,
-      0.21458813548088074,
-      0.21420317888259888,
-      0.21422097086906433,
-      0.2142505943775177,
-      0.21512362360954285,
-      0.21513070166110992,
-      0.21374036371707916,
-      0.21409465372562408,
-      0.21456563472747803
+      0.4006645083427429,
+      0.3121477961540222,
+      0.26978936791419983,
+      0.2467762529850006,
+      0.233573317527771,
+      0.22660203278064728,
+      0.2238287329673767,
+      0.22031696140766144,
+      0.2185668647289276,
+      0.22733329236507416,
+      0.21656949818134308,
+      0.21729229390621185,
+      0.21491321921348572,
+      0.217513769865036,
+      0.21438148617744446,
+      0.21566206216812134,
+      0.21474145352840424,
+      0.21426987648010254,
+      0.22010593116283417,
+      0.21769092977046967,
+      0.22869375348091125,
+      0.21952567994594574,
+      0.21549342572689056,
+      0.21985892951488495,
+      0.21755854785442352,
+      0.2148190140724182,
+      0.21540890634059906,
+      0.21572859585285187,
+      0.22282761335372925,
+      0.21599030494689941,
+      0.21787256002426147,
+      0.21509820222854614,
+      0.22037860751152039,
+      0.21808169782161713,
+      0.2166464775800705,
+      0.21680063009262085,
+      0.2197861671447754,
+      0.21535193920135498,
+      0.2165476232767105,
+      0.21885612607002258,
+      0.22035543620586395,
+      0.21870157122612,
+      0.2194071114063263,
+      0.2288668006658554,
+      0.22658638656139374,
+      0.21837709844112396,
+      0.22776316106319427,
+      0.21995098888874054,
+      0.21652497351169586,
+      0.2186671942472458,
+      0.21589921414852142,
+      0.22090572118759155,
+      0.2184992879629135,
+      0.22463065385818481,
+      0.2180878072977066,
+      0.2206762433052063,
+      0.2174776941537857,
+      0.21741598844528198,
+      0.22063153982162476,
+      0.2209225594997406,
+      0.21870410442352295,
+      0.21939288079738617,
+      0.21922463178634644,
+      0.21901759505271912,
+      0.21871031820774078,
+      0.21940286457538605,
+      0.22338366508483887,
+      0.22199060022830963,
+      0.22276727855205536,
+      0.22758321464061737,
+      0.21942736208438873,
+      0.2235676348209381,
+      0.21883627772331238,
+      0.22012624144554138,
+      0.22346025705337524,
+      0.22928887605667114,
+      0.22114071249961853,
+      0.2271285057067871,
+      0.2219557911157608,
+      0.2226739078760147,
+      0.22591888904571533,
+      0.22239544987678528,
+      0.22148734331130981,
+      0.22554118931293488,
+      0.22757549583911896,
+      0.22252681851387024,
+      0.2235642373561859,
+      0.23279257118701935,
+      0.2421364039182663,
+      0.2251858115196228,
+      0.231143057346344,
+      0.22964315116405487,
+      0.22689692676067352,
+      0.22735212743282318,
+      0.22492077946662903,
+      0.22826562821865082,
+      0.22625166177749634,
+      0.22901424765586853,
+      0.22929875552654266,
+      0.22866594791412354
     ],
     "train_acc": [
-      0.8406666666666667,
-      0.8406666666666667,
-      0.8406666666666667,
-      0.8406666666666667,
-      0.8406666666666667,
-      0.842,
-      0.845,
-      0.8556666666666667,
-      0.8616666666666667,
-      0.8683333333333333,
-      0.8836666666666667,
-      0.8853333333333333,
-      0.883,
-      0.886,
-      0.8906666666666667,
-      0.891,
-      0.89,
-      0.8926666666666667,
-      0.8963333333333333,
-      0.8896666666666667,
-      0.8963333333333333,
-      0.8943333333333333,
-      0.8933333333333333,
+      0.841,
+      0.88,
+      0.892,
+      0.893,
+      0.8976666666666666,
+      0.8993333333333333,
+      0.901,
+      0.902,
+      0.9023333333333333,
       0.897,
-      0.8976666666666666,
-      0.897,
-      0.8966666666666666,
-      0.8956666666666667,
-      0.8963333333333333,
-      0.8956666666666667,
-      0.8973333333333333,
-      0.8973333333333333,
-      0.8976666666666666,
-      0.898,
-      0.898,
-      0.8983333333333333,
-      0.8976666666666666,
-      0.899,
+      0.901,
+      0.9,
+      0.902,
+      0.9006666666666666,
+      0.903,
+      0.9046666666666666,
+      0.9033333333333333,
+      0.903,
       0.8996666666666666,
-      0.898,
-      0.9003333333333333,
-      0.9,
-      0.9006666666666666,
-      0.9,
-      0.9003333333333333,
-      0.9023333333333333,
-      0.9013333333333333,
-      0.9023333333333333,
-      0.9006666666666666,
-      0.901,
-      0.9023333333333333,
-      0.901,
       0.9016666666666666,
-      0.902,
+      0.8893333333333333,
+      0.903,
+      0.9026666666666666,
       0.901,
-      0.9023333333333333,
       0.9013333333333333,
-      0.903,
-      0.9026666666666666,
-      0.9036666666666666,
-      0.902,
-      0.9026666666666666,
-      0.901,
-      0.902,
-      0.9043333333333333,
-      0.902,
-      0.9033333333333333,
-      0.903,
-      0.9033333333333333,
-      0.9036666666666666,
-      0.9033333333333333,
       0.904,
-      0.903,
+      0.9056666666666666,
+      0.904,
+      0.8996666666666666,
+      0.9043333333333333,
+      0.9026666666666666,
+      0.9043333333333333,
+      0.9036666666666666,
       0.9023333333333333,
-      0.9026666666666666,
-      0.902,
-      0.903,
-      0.9023333333333333,
-      0.903,
-      0.9036666666666666,
-      0.9036666666666666,
-      0.9033333333333333,
-      0.9026666666666666,
-      0.9046666666666666,
-      0.904,
-      0.9026666666666666,
-      0.9043333333333333,
-      0.9026666666666666,
-      0.9046666666666666,
-      0.9033333333333333,
-      0.903,
-      0.9036666666666666,
-      0.9026666666666666,
-      0.906,
-      0.9043333333333333,
-      0.904,
       0.905,
-      0.9046666666666666,
       0.9043333333333333,
-      0.9043333333333333
+      0.9033333333333333,
+      0.9053333333333333,
+      0.9043333333333333,
+      0.9026666666666666,
+      0.9036666666666666,
+      0.9046666666666666,
+      0.905,
+      0.8976666666666666,
+      0.8973333333333333,
+      0.9066666666666666,
+      0.894,
+      0.9033333333333333,
+      0.9073333333333333,
+      0.9056666666666666,
+      0.906,
+      0.8996666666666666,
+      0.9056666666666666,
+      0.9023333333333333,
+      0.9066666666666666,
+      0.9023333333333333,
+      0.9073333333333333,
+      0.9053333333333333,
+      0.9046666666666666,
+      0.905,
+      0.907,
+      0.907,
+      0.9073333333333333,
+      0.908,
+      0.905,
+      0.907,
+      0.902,
+      0.9033333333333333,
+      0.9056666666666666,
+      0.9043333333333333,
+      0.9053333333333333,
+      0.9063333333333333,
+      0.907,
+      0.9066666666666666,
+      0.903,
+      0.8976666666666666,
+      0.9083333333333333,
+      0.8996666666666666,
+      0.907,
+      0.904,
+      0.9036666666666666,
+      0.9076666666666666,
+      0.9116666666666666,
+      0.9073333333333333,
+      0.9093333333333333,
+      0.9096666666666666,
+      0.9096666666666666,
+      0.905,
+      0.8953333333333333,
+      0.9076666666666666,
+      0.9003333333333333,
+      0.9016666666666666,
+      0.9103333333333333,
+      0.9073333333333333,
+      0.9113333333333333,
+      0.912,
+      0.912,
+      0.9106666666666666,
+      0.9113333333333333,
+      0.9126666666666666
     ],
     "val_acc": [
       0.84,
-      0.84,
-      0.84,
-      0.84,
-      0.84,
-      0.841,
-      0.843,
-      0.858,
-      0.864,
-      0.872,
-      0.887,
-      0.887,
-      0.886,
-      0.89,
-      0.906,
-      0.902,
-      0.9,
+      0.88,
       0.907,
       0.91,
-      0.902,
-      0.911,
-      0.908,
-      0.907,
-      0.911,
-      0.908,
-      0.913,
-      0.913,
       0.91,
-      0.912,
-      0.912,
-      0.912,
-      0.913,
-      0.913,
-      0.913,
       0.914,
-      0.911,
-      0.912,
-      0.914,
-      0.913,
-      0.914,
-      0.913,
-      0.917,
-      0.917,
-      0.913,
-      0.917,
       0.919,
+      0.913,
+      0.919,
+      0.907,
+      0.921,
+      0.914,
+      0.922,
       0.917,
+      0.92,
+      0.92,
+      0.921,
+      0.919,
+      0.914,
       0.917,
+      0.904,
+      0.918,
       0.915,
-      0.915,
-      0.917,
-      0.917,
+      0.918,
       0.916,
       0.918,
-      0.92,
+      0.915,
       0.919,
+      0.913,
+      0.915,
       0.921,
+      0.918,
+      0.915,
       0.917,
-      0.921,
-      0.921,
-      0.921,
-      0.921,
-      0.921,
-      0.922,
-      0.92,
-      0.922,
-      0.921,
-      0.922,
+      0.915,
+      0.914,
+      0.912,
       0.919,
-      0.924,
-      0.92,
-      0.925,
-      0.921,
-      0.92,
+      0.914,
+      0.916,
+      0.912,
+      0.915,
       0.918,
-      0.92,
-      0.921,
-      0.92,
-      0.92,
-      0.92,
-      0.922,
-      0.92,
-      0.921,
-      0.92,
+      0.906,
+      0.907,
+      0.917,
+      0.907,
+      0.91,
+      0.917,
+      0.916,
+      0.917,
+      0.911,
+      0.914,
+      0.909,
       0.919,
-      0.92,
-      0.921,
-      0.92,
-      0.92,
-      0.92,
+      0.911,
+      0.919,
+      0.916,
+      0.911,
+      0.913,
       0.918,
-      0.921,
-      0.921,
-      0.921,
-      0.922,
+      0.912,
+      0.915,
+      0.913,
+      0.917,
+      0.917,
+      0.907,
+      0.91,
+      0.915,
+      0.906,
+      0.915,
+      0.91,
+      0.915,
       0.92,
-      0.92,
-      0.921,
-      0.921,
-      0.919
+      0.907,
+      0.906,
+      0.917,
+      0.905,
+      0.917,
+      0.913,
+      0.909,
+      0.913,
+      0.916,
+      0.912,
+      0.908,
+      0.914,
+      0.912,
+      0.902,
+      0.9,
+      0.91,
+      0.906,
+      0.906,
+      0.912,
+      0.913,
+      0.911,
+      0.909,
+      0.906,
+      0.908,
+      0.906,
+      0.906
     ]
   },
-  "classification_report": "              precision    recall  f1-score   support\n\n           0       0.73      0.38      0.50        21\n           1       0.93      0.96      0.95       840\n           2       0.76      0.68      0.72       139\n\n    accuracy                           0.91      1000\n   macro avg       0.81      0.68      0.72      1000\nweighted avg       0.91      0.91      0.91      1000\n",
+  "classification_report": "              precision    recall  f1-score   support\n\n           0       0.56      0.24      0.33        21\n           1       0.91      0.97      0.94       840\n           2       0.82      0.54      0.65       139\n\n    accuracy                           0.90      1000\n   macro avg       0.76      0.58      0.64      1000\nweighted avg       0.89      0.90      0.89      1000\n",
   "test_metrics": {
-    "loss": 0.22251762449741364,
-    "accuracy": 0.91
+    "loss": 0.23753686249256134,
+    "accuracy": 0.899
   },
   "predictions": {
     "y_true": [
@@ -1488,7 +3811,6 @@
     ],
     "y_pred": [
       1,
-      2,
       1,
       1,
       1,
@@ -1500,45 +3822,6 @@
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      1,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
       1,
       1,
       1,
@@ -1571,6 +3854,46 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       2,
       1,
       1,
@@ -1618,7 +3941,7 @@
       1,
       1,
       2,
-      2,
+      1,
       1,
       2,
       1,
@@ -1637,7 +3960,6 @@
       1,
       1,
       1,
-      2,
       1,
       1,
       1,
@@ -1645,200 +3967,9 @@
       1,
       1,
       1,
-      2,
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      2,
-      1,
-      1,
-      0,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      0,
-      2,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
       1,
       1,
       1,
@@ -1859,6 +3990,198 @@
       1,
       1,
       0,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
       1,
       1,
       1,
@@ -1877,10 +4200,6 @@
       2,
       2,
       1,
-      2,
-      1,
-      2,
-      1,
       1,
       1,
       2,
@@ -1890,51 +4209,6 @@
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      2,
-      0,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
       1,
       1,
       1,
@@ -1964,28 +4238,13 @@
       1,
       1,
       1,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
       1,
       1,
       1,
       1,
       2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
       1,
       2,
-      2,
-      1,
-      1,
       1,
       1,
       1,
@@ -2003,21 +4262,33 @@
       1,
       1,
       1,
-      2,
-      1,
-      1,
-      2,
-      1,
-      1,
       1,
       1,
       1,
       2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       2,
-      1,
-      1,
-      1,
-      1,
+      2,
       1,
       1,
       1,
@@ -2050,22 +4321,6 @@
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
       2,
       1,
       1,
@@ -2074,8 +4329,14 @@
       2,
       1,
       1,
+      2,
       1,
       1,
+      1,
+      1,
+      1,
+      2,
+      2,
       1,
       1,
       1,
@@ -2093,20 +4354,36 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
       2,
       1,
       1,
       1,
       1,
       1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
       1,
       1,
       1,
@@ -2145,21 +4422,17 @@
       1,
       1,
       1,
-      1,
-      1,
       2,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
       0,
       1,
       1,
       1,
       1,
       1,
+      2,
+      1,
+      1,
+      1,
       1,
       1,
       2,
@@ -2177,11 +4450,6 @@
       1,
       1,
       1,
-      2,
-      1,
-      1,
-      2,
-      1,
       1,
       1,
       1,
@@ -2204,6 +4472,31 @@
       1,
       2,
       1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -2211,150 +4504,27 @@
       1,
       1,
       2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1,
       1,
       0,
       1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      2,
-      2,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      2,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
       2,
       1,
       1,
@@ -2364,94 +4534,6 @@
       1,
       1,
       2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
-      1,
-      2,
-      2,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      2,
-      1,
       1,
       1,
       0,
@@ -2465,6 +4547,27 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       2,
       1,
       1,
@@ -2485,7 +4588,227 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
     ]
   }

@@ -23,6 +23,7 @@ from .helpers import (
     ensure_directories,
     safe_divide
 )
+from .metrics import MetricsTracker, PerformanceTimer
 
 __all__ = [
     'Config',
@@ -44,5 +45,8 @@ __all__ = [
     'list_saved_models',
     'create_markdown_report',
     'ensure_directories',
-    'safe_divide'
+    'safe_divide',
+    # Advanced metrics
+    'MetricsTracker',
+    'PerformanceTimer'
 ]
