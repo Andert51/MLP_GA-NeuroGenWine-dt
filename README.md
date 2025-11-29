@@ -9,7 +9,7 @@
 ╚██╗ ██╔╝██║██║╚██╗██║██║   ██║██║   ██║██╔══╝  ██║╚██╗██║
  ╚████╔╝ ██║██║ ╚████║╚██████╔╝╚██████╔╝███████╗██║ ╚████║
   ╚═══╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═══╝
-                  CYBERCORE NEUROEVOLUTION SYSTEM
+                  NEUROgen SYSTEM
 ```
 
 **A Hybrid Neural Network + Genetic Algorithm System for Wine Quality Prediction**
